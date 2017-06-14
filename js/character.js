@@ -40,7 +40,7 @@ function isThereExtra(levelOne) {
 }
 
 // URL
-const originsURL = 'https://gist.githubusercontent.com/alice-em/bddb31c810104d1d9a1728be42d078df/raw/5839c2b7996882033028f577bb2baa0ebfbd358a/origins.json';
+const originsURL = 'https://alice-em.github.io/gammaworld-characterbuilder/js/origins.json';
 
 // Different Origins
 const core = ['android', 'cockroach', 'doppelganger', 'electrokinetic', 'empath', 'felinoid', 'giant', 'gravity controller', 'hawkoid', 'hypercognitive', 'mind breaker', 'mind coercer', 'plant', 'pyrokinetic', 'radioactive', 'rat swarm', 'seismic', 'speedster', 'telekinetic', 'yeti'];
