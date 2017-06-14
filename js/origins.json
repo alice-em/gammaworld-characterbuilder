@@ -1,0 +1,3292 @@
+{
+  "core": {
+    "android": {
+      "name": "Android",
+      "appearance": "Your metallic body parts draw attention before people notice one of your eyes is a flickering LED.",
+      "type": {
+        "stat": "int",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "science",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Built to Last",
+        "text": "Gain a +2 bonus to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Machine Powered",
+          "text": "You do not need to eat, drink, or breathe."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target grants combat advantage to you until the end of the encounter.",
+      "powers": {
+        "novice": {
+          "name": "Machine Grip",
+          "flavor": "When you get a hand on an enemy, your grip tightens like a steel-jawed vise.",
+          "freq": "At-Will",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One Creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. REFL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + INT + twice your LEVEL physical damage, and the target is immobilized until the start of your next turn. If you move to a square that isn't adjacent to the target, the immobilization ends.",
+            "vars": ["int", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Be My Battery",
+          "flavor": "You transform energy attacks into reserve energy you use to protect and repair yourself.",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Immediate Interrupt",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "You take electricity, fire, laser, or radiation damage",
+          "effect": {
+            "text": "Effect: You gain immunity to the triggering damage type until the start of your next turn. You also gain temporary hit points equal to 10 + INT.",
+            "vars": ["int"]
+          }
+        },
+        "expert": {
+          "name": "Dark Energy Meltdown",
+          "flavor": "You've learned to harness the radioactive leakage from your power plant containment vessel to harm your foes.",
+          "freq": "Encounter",
+          "type": ["Dark", "Radiation"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. FORT",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + INT + your LEVEL radiation damage. \nEffect: The target is slowed until the start of your next turn.",
+            "vars": ["int", "lvl"]
+          }
+        }
+      }
+    },
+    "cockroach": {
+      "name": "Cockroach",
+      "appearance": "You're a huge cockroach! From a distance, your exoskeleton looks like a long coat. You've also got antennae, bug eyes, and spindly limbs.",
+      "type": {
+        "stat": "con",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "mechanics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Scurry and Skitter",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Bug Legs",
+          "text": "You can climb your speed. You can even climb upside down across horizontal surfaces. You can't attack while climbing."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you gain a +4 bonus to AC until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Eau de Roach",
+          "flavor": "You spit at your foe. The spit is a combination of excrement, scent gland fluid, regurgitated food, and stomach acid. Yep, it's nasty, and it burns your foe and forces it away from you.",
+          "freq": "At-Will",
+          "type": ["Acid", "Bio"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One Creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + CON + twice your LEVEL acid damage, and you push the target 1 square.",
+            "vars": ["con", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Hard to Kill",
+          "flavor": "When others count you out, your roach exoskeleton gives you a second chance.",
+          "freq": "Encounter",
+          "type": ["Bio", "Healing"],
+          "action": "Immediate Interrupt",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "You drop to 0 hit points",
+          "effect": {
+            "text": "You regain hit points equal to 10 + your LEVEL.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Opportunistic Meal",
+          "flavor": "You never know when your next meal might be.",
+          "freq": "Encounter",
+          "type": ["Acid", "Bio"],
+          "action": "Free Action",
+          "range": "Melee 1",
+          "trigger": "You end your turn adjacent to a prone creature",
+          "target": "Target: The triggering creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: Con + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d12 + CON + twice your LEVEL acid damage. \nMiss: Half damage.",
+            "vars": ["con", "2lvl"]
+          }
+        }
+      }
+    },
+    "doppelganger": {
+      "name": "Doppelganger",
+      "appearance": "You have a distinctive dark gray or midnight blue skin hue. You sometimes leave afterimages or echoes of yourself as you move.",
+      "type": {
+        "stat": "int",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "conspiracy",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Not Really There",
+        "text": "Gain a +2 bonus to Reflex",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Two Possibilities",
+          "text": "Whenever you draw an Alpha Mutation card, draw two cards from the same deck and choose which one to keep. Put the other on the bottom of the deck."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you can use 'double trouble' as a free action.",
+      "powers": {
+        "novice": {
+          "name": "Double Trouble",
+          "flavor": "You create a duplicate of yourself for a short time.",
+          "freq": "At-Will",
+          "type": ["Dark"],
+          "action": "Standard Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "attack": {
+            "text": "",
+            "vars": []
+          },
+          "effect": {
+            "text": "Effect: You create a duplicate of yourself in an unoccupied square within 5 squares of you. The duplicate acts in the initiative order directly after you and can take all the actions that you can take, except that it can't use doppelganger powers, Alpha Mutations, or Omega Tech. Its statistics are the same as yours, except that it has only 1 hit point. Your duplicate disappears when it drops to 0 hit points or at the end of your next turn.",
+            "vars": []
+          }
+        },
+        "utility": {
+          "name": "Two Places at Once",
+          "flavor": "You're literally in two places at once.",
+          "freq": "Encounter",
+          "type": ["Dark", "Teleportation"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Choose an unoccupied square within 5 squares of you. You simultaneously occupy that square and your current square. Before the start of your next turn, you can teleport to the chosen square as a free action.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Multiplicity",
+          "flavor": "You surround yourself with a crowd of duplicates, who lash out at and hinder nearby enemies.",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Close burst 3",
+          "trigger": "",
+          "target": "Target: Each enemy in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. AC",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + INT + your LEVEL physical damage. \nEffect: The burst creates a zone that lasts until the end of your next turn. The lone is difficult terrain for your enemies. While within the lone, you and your allies gain cover from attacks.",
+            "vars": ["int", "lvl"]
+          }
+        }
+      }
+    },
+    "electrokinetic": {
+      "name": "Electrokinetic",
+      "appearance": "You give off a slightly metallic odor. Harmless sparks jump from you to nearby metal objects. Ancient devices sometimes come to life when you're nearby, only to power down again once you leave.",
+      "type": {
+        "stat": "wis",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "mechanics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Lightning Reflexes",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Natural Battery",
+          "text": "Gain resist 10 electricity."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and one ally within 5 squares of the target gains 10 temporary hit points.",
+      "powers": {
+        "novice": {
+          "name": "Electric Boogaloo",
+          "flavor": "You zap your enemy with an arc of electricity, making your foe jerk and dance around like a spaz.",
+          "freq": "At-Will",
+          "type": ["Dark", "Electricity"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. FORT",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + WIS + twice your LEVEL electricity damage, and the target takes a -2 penalty to all defenses until the end of your next turn.",
+            "vars": ["wis", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Stand Clear!",
+          "flavor": "You jolt an ally out of whatever funk he's in.",
+          "freq": "Encounter",
+          "type": ["Dark", "Electricity", "Healing"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One ally",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Choose one of the following options: The target regains hit points equal your WIS + LEVEL, or the target makes a saving throw with a bonus equal to your WIS.",
+            "vars": ["wis", "lvl"]
+          }
+        },
+        "expert": {
+          "name": "Lightning Bolt",
+          "flavor": "You uncork a spectacular lightning bolt that fries a foe or supercharges an ally.",
+          "freq": "Encounter",
+          "type": ["Dark", "Electricity"],
+          "action": "Standard Action",
+          "range": "Ranged 5",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. REFL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 3d8 + WIS + twice your LEVEL electricity damage. \nMiss: The ally nearest to the target gains temporary hit points equal to 3d8 + WIS.",
+            "vars": ["wis", "2lvl"]
+          }
+        }
+      }
+    },
+    "empath": {
+      "name": "Empath",
+      "appearance": "You unconsciously mimic the emotional state 01 creatures around you. If your friends panic, you echo their terror. When you're with a weepy drunk, you inevitably end up crying into your beer, too.",
+      "type": {
+        "stat": "cha",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "insight",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Pacifying Aura",
+        "text": "You and each ally adjacent to you never grant combat advantage.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Vital Presence",
+          "text": "Allies adjacent to you gain a +5 bonus to death saving throws."
+        }
+      },
+      "critical": "When you score a critical hit, one ally within 5 squares of the target regains hit points equa'i to twice your LEVEL.",
+      "powers": {
+        "novice": {
+          "name": "Vitality Transfer",
+          "flavor": "First, do no harm-not to anyone you like, anyway.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Standard Action",
+          "range": "Ranged 3",
+          "target": "Target: One Creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. FORT",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: The target is weakened until the end of your next turn. In addition, you or one ally within 5 squares of you gains temporary hit points equal to CHA.",
+            "vars": ["cha"]
+          }
+        },
+        "utility": {
+          "name": "Share Strength",
+          "flavor": "You link the life forces of two allies together, allowing one to use his or her vitality to heal the other.",
+          "freq": "Encounter",
+          "type": ["Healing", "Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Clost burst 5",
+          "target": "Target: You and one ally in burst, or two allies in burst",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: One target of your choice takes 10 psychic damage. and the other target regains 10 hit points and makes a saving throw.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Zone of Pacification",
+          "flavor": "You render the creatures around you incapable of fighting.",
+          "freq": "Encounter",
+          "type": ["Psi", "Zone"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. WILL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: The target is immobilized (save ends). \nEffect: The burst creates a zone that lasts until the end of your next turn. Creatures within the zone can't attack.",
+            "vars": []
+          }
+        }
+      }
+    },
+    "felinoid": {
+      "name": "Felinoid",
+      "appearance": "Your furry pelt bears the markings of tiger stripes, leopard spots, or something more fantastic. You might have whiskers, a tail, and large pointed ears. Most importantly, you've got cat-class and you've got cat-style.",
+      "type": {
+        "stat": "dex",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "stealth",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Catlike Reflexes",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Feline Speed",
+          "text": "You gain a +1 bonus to speed while wearing light armor or no armor."
+        },
+        "two": {
+          "name": "Catfall",
+          "text": "You take no damage from falls of 50 feet or less, and you always land on your feet when you fall."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you can shift 3",
+      "powers": {
+        "novice": {
+          "name": "Slashing Claws",
+          "flavor": "You rake at your foe's face with a lightning-fast flurry of razor-sharp claws.",
+          "freq": "At-Will",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One Creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. REFL (Make 2 attacks)",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit (one attack): 1d6 + DEX + twice your LEVEL physical damage. \nHit (both attacks): 2d6 + DEX + twice your LEVEL physical damage, and the target is blinded until the start of your next turn .",
+            "vars": ["dex", "lvl", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Pounce",
+          "flavor": "Your springy muscles let you leap a long distance.",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You jump a number of squares equal to your speed, either vertically or horizontally.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Killing Bite",
+          "flavor": "You bound upon your enemy and knock it to the ground, then you lock your jaws around it.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One Creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. REFL",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 3d10 + DEX + twice your LEVEL physical damage. \nEffect: The target falls prone. If it stands up before the end of your next turn while you are adjacent to it, it takes 10 physical damage. \nSpecial: When charging, you can use this power in place of a melee basic attack.",
+            "vars": ["dex", "lvl"]
+          }
+        }
+      }
+    },
+    "giant": {
+      "name": "Giant",
+      "appearance": "You tower over your friends and foes, and your shadow stretches large. Have we mentioned that you're freakishly big?",
+      "type": {
+        "stat": "str",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Just Tough",
+        "text": "Gain a +2 bonus to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Encumbered Speed",
+          "text": "You move your speed, even while wearing heavy armor or carrying a heavy load."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you push the target 3 squares.",
+      "powers": {
+        "novice": {
+          "name": "Brickbat",
+          "flavor": "You spin in a circle with your weapon, knocking down a wide swath of foes.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Close Burst 1",
+          "target": "Target: Each enemy in burst you can see",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["str", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + STR physical damage, and you knock the target prone.",
+            "vars": ["str"]
+          }
+        },
+        "utility": {
+          "name": "Focused Strength",
+          "flavor": "You flex your large muscles, bringing every ounce of strength to bear.",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You gain a +5 power bonus to damage rolls with melee attacks until the start of your next turn.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Hurl Foe",
+          "flavor": "You pick up your foe and toss it like a small toy.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d12 + STR + twice your LEVEL physical damage, and you slide the target 5 squares. \nEffect: The target falls prone.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    },
+    "gravity controller": {
+      "name": "Gravity Controller",
+      "appearance": "You are dense and compact; not short or fat, just solid. When you use your gravity control powers, your skin sparks with purple-black radiance.",
+      "type": {
+        "stat": "con",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "It Fell Sideways!",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Gravity by Choice",
+          "text": "You take no damage from falling."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and one creature within 2 squares of the target is immobilized until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Gravitational Pulse",
+          "flavor": "You unleash a flood of gravitons that swarm your foe, dragging down its every step.",
+          "freq": "At-Will",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + CON + twice your LEVEL physical damage, and the target is slowed until the end of your next turn.",
+            "vars": ["str"]
+          }
+        },
+        "utility": {
+          "name": "Sideways Gravity",
+          "flavor": "An enemy moves next to you, and you send it away in a flash of quantum radiance.",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Immediate Reaction",
+          "range": "Personal",
+          "target": "Target: The triggering enemy",
+          "special": "",
+          "trigger": "An enemy enters a square adjacent to you",
+          "effect": {
+            "text": "Effect: You slide the target 6 squares.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Singularity",
+          "flavor": "You focus on a point and create a small block hole that sucks people toward it.",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Area burst 2 within 10 squares",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + CON + your LEVEL physical damage. \nEffect: You pull the target 2 squares toward the burst's origin square, and the target falls prone.",
+            "vars": ["con", "lvl"]
+          }
+        }
+      }
+    },
+    "hawkoid": {
+      "name": "Hawkoid",
+      "appearance": "You have a large hooked beak, brown plumage, and tough, scaly skin on your talons and wing-claws. You have a wingspan of nearly 15 feet.",
+      "type": {
+        "stat": "wis",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "perception",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "",
+        "text": "",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Flight",
+          "text": "You have a fly speed equal to your speed (see \"Speed\" on page 104 for rules on flying). While flying, you take a -2 penalty to attack rolls."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you can fly your speed as a free action.",
+      "powers": {
+        "novice": {
+          "name": "Terrifying Shriek",
+          "flavor": "You make piercing shriek that sends nearby creatures reeling in terror.",
+          "freq": "Encounter",
+          "type": ["Bio", "Psychic"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. WILL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + WIS + your LEVEL psychic damage, and you slide the target 1 square.",
+            "vars": ["wis", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Flap Away",
+          "flavor": "With a flap of your wings, you quickly move away from a foe.",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Immediate Reaction",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "An enemy enters a square adjacent to you",
+          "effect": {
+            "text": "Effect: You fly 2 squares without provoking opportunity attacks. If you don't land at the end of this movement, you fall.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Power Dive",
+          "flavor": "You leap into the air and then plummet into your foe in a devastating attack.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "Effect: Before making this attack, you can fly your speed.",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. AC",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 3dl0 + WIS + twice your LEVEL physical damage, and you knock the target prone. \nMiss: Half damage.",
+            "vars": ["wis", "2lvl"]
+          }
+        }
+      }
+    },
+    "hypercognitive": {
+      "name": "Hypercognitive",
+      "appearance": "You have an unsettling calmness and economy of motion. You assess your surroundings with a single glance.",
+      "type": {
+        "stat": "wis",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "insight",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Forseen Consequences",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Unsurprisable",
+          "text": "Gain a +8 bonus to initiative checks."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you or an ally within 5 squares of you gains a +2 bonus to all defenses until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Uncanny Strike",
+          "flavor": "With a glance, you assess your foe's weaknesses and strike to enhance that disadvantage.",
+          "freq": "Encounter",
+          "type": ["Psi", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged Weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["wis", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + WIS + your LEVEL physical damage, and the target grants combat advantage until the end of your next turn.",
+            "vars": ["wis", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Saw It Coming",
+          "flavor": "You anticipate your enemy's attack and respond accordingly.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Immediate Interrupt",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "An enemy hits you",
+          "effect": {
+            "text": "Effect: The triggering enemy rerolls the attack and must use the new result.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Exploit Weakness",
+          "flavor": "You perceive a weakness in your foe's defenses and show your allies how to exploit it.",
+          "freq": "Encounter",
+          "type": ["Psi", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged Weapon",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL + Weapon Accuracy + 2 vs. AC",
+            "vars": ["wis", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + WIS + your LEVEL physical damage, and the target gains vulnerable 5 to all damage until the start of your next turn.",
+            "vars": ["wis", "lvl"]
+          }
+        }
+      }
+    },
+    "mind breaker": {
+      "name": "Mind Breaker",
+      "appearance": "Your head is bigger than normal, and you have a tendency toward baldness.",
+      "type": {
+        "stat": "cha",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Unbreakable Mind",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Group Telepathy",
+          "text": "While you're conscious, you and each ally within 10 squares of you can mentally communicate with one another."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target takes ongoing 5 psychic damage (save ends).",
+      "powers": {
+        "novice": {
+          "name": "Psychic Assault",
+          "flavor": "You project a bolt of mental energy that slams into your foe's psyche like a sucker punch.",
+          "freq": "At-Will",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 20",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. WILL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + CHA + twice your LEVEL psychic damage.",
+            "vars": ["cha", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Psychic Shield",
+          "flavor": "You surrou nd yourself with a wall of pure fury that makes your enemies want not to attack you.",
+          "freq": "Encounter",
+          "type": ["Psi", "Psychic"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Until the end of your next turn, you gain a +3 power bonus to all defenses.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Mind Break",
+          "flavor": "You unleash a mental onslaught upon your enemy, boring a psychic hole into its mind.",
+          "freq": "Encounter",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. WILL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 3d10 + CHA + twice your LEVEL psychic damage. \nEffect: The target gains vulnerable 5 psychic until the end of your next turn.",
+            "vars": ["cha", "2lvl"]
+          }
+        }
+      }
+    },
+    "mind coercer": {
+      "name": "Mind Coercer",
+      "appearance": "Enlarged, dilated blood vessels in your eyes give them a red cast, which becomes more intense when you use your powers.",
+      "type": {
+        "stat": "cha",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Labyrinthine Mind",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Group Telepathy",
+          "text": "While you're conscious, you and each ally within 10 squares of you can mentally communicate with one another."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you slide the target 3 squares",
+      "powers": {
+        "novice": {
+          "name": "Mental Push",
+          "flavor": "You give your foe a mental push. Before it knows what's happening, it attacks its ally.",
+          "freq": "At-Will",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. WILL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: CHA psychic damage, and the target makes a basic attack as a free action against a creature of your choice.",
+            "vars": ["cha"]
+          }
+        },
+        "utility": {
+          "name": "Nothing to See Here",
+          "flavor": "You convince your foes that you're not important enough to worry about.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You become invisible to all enemies until the end of your next turn or until you attack.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Your Thoughts Are My Thoughts",
+          "flavor": "You're a puppet master and you make your foe dance like a puppet. Dance!",
+          "freq": "Encounter",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "",
+            "vars": []
+          },
+          "effect": {
+            "text": "Effect: CHA psychic damage, and you slide the target a number of squares equal to its speed. The target then makes a basic attack against a creature of your choice, with a +4 power bonus to the attack roll and the damage roll.",
+            "vars": ["cha"]
+          }
+        }
+      }
+    },
+    "plant": {
+      "name": "Plant",
+      "appearance": "You might have long, tough vines for limbs, a tangle of woody stems for your trunk, and a bulblike brain hidden in the middle of your body.",
+      "type": {
+        "stat": "con",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "nature",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Hardened Bark",
+        "text": "Gain a +2 bonus to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Vulnerable to Fire",
+          "text": "Whenever you take fire damage, you take 5 extra fire damage."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals ldl0 extra damage, and the target is immobilized until the start of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Lashing Creepers",
+          "flavor": "You flail at nearby foes with thorn-covered limbs.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. REFL",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + CON + your LEVEL physical damage, and the target is slowed until the end of your next turn.",
+            "vars": ["con", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Instant Grove",
+          "flavor": "You cause a small thicket of plants to sprout from the ground around you, slowing your enemies.",
+          "freq": "Encounter",
+          "type": ["Bio", "Zone"],
+          "action": "Move Action",
+          "range": "Close Burst 3",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: The burst creates a zone that lasts until the end of your next turn. The zone is difficult terrain for your enemies. While the zone lasts, you're immobilized and immune to forced movement, you have cover from all attacks, and your melee attack range increases by 2.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Insidious Pollen",
+          "flavor": "You grow a small, flowering bloom and puff hallucinogenic pollen into an enemy's face.",
+          "freq": "Encounter",
+          "type": ["Bio", "Poison"],
+          "action": "Standard Action",
+          "range": "Melee 2",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. WILL",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + CON + twice your LEVEL poison damage, and you dominate the target until the end of your next turn. \nMiss: The target takes a -5 penalty to attack rolls against you until the end of your next turn.",
+            "vars": ["con", "2lvl"]
+          }
+        }
+      }
+    },
+    "pyrokinetic": {
+      "name": "Pyrokinetic",
+      "appearance": "Your hair is flame, your touch can ignite a blaze, and your breath is an all-consuming inferno. Where you walk, you leave fine ash and sooty footprints behind.",
+      "type": {
+        "stat": "wis",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Fire Resistance",
+        "text": "Gain resist 10 fire.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Fiery Aura",
+          "text": "Whenever a creature ends its turn adjacent to you, it takes 5 fire damage."
+        }
+      },
+      "critical": "When you score a critical hit, the target gains ongoing 10 fire damage (save ends).",
+      "powers": {
+        "novice": {
+          "name": "Fiery Flare",
+          "flavor": "You fan the flames of your fiery aura.",
+          "freq": "At-Will",
+          "type": ["Fire", "Psi"],
+          "action": "Standard Action",
+          "range": "Ranged 5",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. REFL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + WIS + twice your LEVEL fire damage.",
+            "vars": ["wis", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Blazing Rocket",
+          "flavor": "You propel yourself into the air on a pillar of fire.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You gain a fly speed of 10 until the end of your next turn. If you don't land before this effect ends, you fall.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Flaming Breath",
+          "flavor": "You breathe out, unleashing a tide of flame.",
+          "freq": "Encounter",
+          "type": ["Fire", "Psi"],
+          "action": "Standard Action",
+          "range": "Close blast 5",
+          "trigger": "",
+          "target": "Target: Each creature in blast",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. REFL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + WIS + your LEVEL fire damage. \nMiss: Half damage.",
+            "vars": ["wis", "lvl"]
+          }
+        }
+      }
+    },
+    "radioactive": {
+      "name": "Radioactive",
+      "appearance": "You give off a faint glow, usually red, which intensifies when you use your radioactive powers.",
+      "type": {
+        "stat": "con",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "science",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "You've had Worse",
+        "text": "Gain a +2 bonus to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Gamma Tolerance",
+          "text": "Gain resist 15 radiation."
+        }
+      },
+      "critical": "When you score a critical hit, the target is weakened until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Radiation Eyes",
+          "flavor": "Your eyes glow cherry red as you loose a jagged bolt of ionizing radiation at your foe.",
+          "freq": "At-Will",
+          "type": ["Dark", "Radiation"],
+          "action": "Standard Action",
+          "range": "Ranged 5",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + CON + twice your LEVEL radiation damage, and the target takes a -2 penalty to all defenses until the end of your next turn.",
+            "vars": ["con", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Hawking Portal",
+          "flavor": "You bore tunnels through space with a pulse of invigorating radiation.",
+          "freq": "Encounter",
+          "type": ["Dark", "Radiation", "Teleportation"],
+          "action": "Move Action",
+          "range": "Close burst 10",
+          "target": "Target: You and one or two allies in burst",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Each target teleports to any other square in the burst, then regains hit points equal to 5 plus your LEVEL.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Gamma Eruption",
+          "flavor": "You release a narrow beam of intense radiation at your foe.",
+          "freq": "Encounter",
+          "type": ["Dark", "Radiation"],
+          "action": "Standard Action",
+          "range": "Ranged 5",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + CON + twice your LEVEL radiation damage. \nEffect: The target is weakened until the end of your next turn .",
+            "vars": ["con", "2lvl"]
+          }
+        }
+      }
+    },
+    "rat swarm": {
+      "name": "Rat Swarm",
+      "appearance": "Your body is composed of hundreds of small beings that swarm in a single square, though you usually cluster into a shape suitable for wearing clothing and wielding equipment and weapons using your many tiny hands.",
+      "type": {
+        "stat": "dex",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "stealth",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Swarm Defense",
+        "text": "Gain resist 5 to all damage against melee and ranged attacks, and vulnerable 5 to damage from area and close attacks.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Crawling Mass",
+          "text": "You can't be knocked prone."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target takes a -2 penalty to attack rolls until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "SWARM!",
+          "flavor": "You swarm across your foe, biting it dozens of times as you tangle its limbs.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. REFL",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + DEX + twice your LEVEL physical damage, and the target is immobilized until the end of your next turn.",
+            "vars": ["dex", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Cover More Ground",
+          "flavor": "You disperse across the graund and quickly reform in a tactically advantageous spot.",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You shift a number of squares equal to your DEX.",
+            "vars": ["dex"]
+          }
+        },
+        "expert": {
+          "name": "Death by a Thousand Bites",
+          "flavor": "You swarm around yourfoe, delivering a multitude of tiny bites that all result in bleeding wounds.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. FORT",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + DEX physical damage. \nEffect: At the start of your next turn, the target takes physical damage equal to three times your LEVEL.",
+            "vars": ["dex"]
+          }
+        }
+      }
+    },
+    "seismic": {
+      "name": "Seismic",
+      "appearance": "Your skin is composed of a tough, organic rubble several inches thick that has a brown, orange, or dull red coloration.",
+      "type": {
+        "stat": "str",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Armored Skin",
+        "text": "Gain resist 5 physical.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Ponderous",
+          "text": "Take a -1 penalty to speed."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you knock the target and each enemy adjacent to the target prone.",
+      "powers": {
+        "novice": {
+          "name": "Seismic Stomp",
+          "flavor": "You stomp on the ground, sending a shock wave of energy into foes around you.",
+          "freq": "At-Will",
+          "type": ["Dark", "Sonic"],
+          "action": "Standard Action",
+          "range": "Close burst 1",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + STR + your LEVEL sonic damage, and you knock the target prone.",
+            "vars": ["str", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Ground Anchor",
+          "flavor": "You merge with the ground to keep from being knocked over or moved against your will.",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Immediate Interrupt",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "You are hit by an attack that pulls you, pushes you, slides you, or knocks you prone",
+          "effect": {
+            "text": "Effect: You aren't pulled, pushed, slid, or knocked prone by the attack.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Clobberin' Time",
+          "flavor": "You clench a huge, rocky fist and punch the punk's lights out.",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + STR + twice your LEVEL physical damage, and you push the target 3 squares. \nEffect: The target falls prone.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    },
+    "speedster": {
+      "name": "Speedster",
+      "appearance": "You are long-limbed and slim, and you're always hungry due to your heightened metabolism.",
+      "type": {
+        "stat": "dex",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "acrobatics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Just a Blur",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Blinding Speed",
+          "text": "Gain a +2 bonus to speed while wearing light armor or no armor."
+        }
+      },
+      "critical": "When you score a critical hit, you can make a basic attack as a free action.",
+      "powers": {
+        "novice": {
+          "name": "Quick Attack",
+          "flavor": "You move and strike and move before your foe even knows it's being attacked.",
+          "freq": "Encounter",
+          "type": ["Psi", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["dex", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + DEX + your LEVEL physical damage, and you shift 2 squares.",
+            "vars": ["dex", "lvl", "weapon"]
+          }
+        },
+        "utility": {
+          "name": "Whizzer",
+          "flavor": "You become a bluras you race across the ground.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You shift your speed.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Swift Pummel",
+          "flavor": "You attack so quickly that your foe can't tell where one strike leaves off and the next begins.",
+          "freq": "Encounter",
+          "type": ["Psi", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL + Weapon Accuracy + 2 vs. AC (Make 4 attacks)",
+            "vars": ["dex", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] physical damage.",
+            "vars": ["weapon"]
+          }
+        }
+      }
+    },
+    "telekinetic": {
+      "name": "Telekinetic",
+      "appearance": "You can hide your talent, but there are always telltale signs. Small objects near you sometimes levitate, furniture rattles, and doors open.",
+      "type": {
+        "stat": "int",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "mechanics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Telekinetic Shield",
+        "text": "While you're conscious, you gain a +2 bonus to AC and Reflex.",
+        "type": ["refl", "AC"],
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Telekinetic Reach",
+          "text": "You can manipulate unattended objects up to 5 squares away from you as if you were using them yourself. For example, you can open a door as a minor action or swing a club as a standard action. You take a -2 penalty to attack rolls of attacks you make using this trait."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you slide one creature within 5 squares of you 2 squares.",
+      "powers": {
+        "novice": {
+          "name": "Telekinetic Wave",
+          "flavor": "You overwhelm your foes with a surge of telekinetic energy.",
+          "freq": "At-Will",
+          "type": ["Force", "Psi"],
+          "action": "Standard Action",
+          "range": "Close blast 5",
+          "target": "Target: Each creature in blast",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. FORT",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + INT + your LEVEL force damage, and you push the target 3 squares.",
+            "vars": ["int", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Chess Pieces",
+          "flavor": "You move your allies out of harm's way . . . or into it.",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Minor Action",
+          "range": "Close burst 5",
+          "target": "Target: Each ally in burst",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You slide the target 3 squares to another square in the burst.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Telekinetic Clutch",
+          "flavor": "You seize on enemy in a telekinetic grasp and slowly crush it.",
+          "freq": "Encounter",
+          "type": ["Force", "Psi"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. FORT",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + INT + twice your LEVEL force damage, and the target is immobilized and takes ongoing 10 force damage (save ends both). \nMiss: Half damage, and the target is slowed (save ends).",
+            "vars": ["int", "2lvl"]
+          }
+        }
+      }
+    },
+    "yeti": {
+      "name": "Yeti",
+      "appearance": "A shaggy pelt of fur covers you. Yetis are usually dirty white in color, but in Gamma Terra, pelts of fantastic patterns and hues aren't uncommon. You stand 7 feet tall when you're upright, although you sometimes go on all fours.",
+      "type": {
+        "stat": "str",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "nature",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Hard to Hurt",
+        "text": "Gain a +1 bonus to AC",
+        "type": "AC",
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Cold Resistance",
+          "text": "Gain resist 10 cold."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target takes a -5 penalty to attack rolls against any creature other than you until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Big Claws",
+          "flavor": "You rake on enemy with your powerful claws.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Minor Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL + 2 vs. AC",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + STR + twice your LEVEL physical damage, and the target is slowed until the end of your next turn.",
+            "vars": ["str", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Yeti Rage",
+          "flavor": "When you get hurt, you get mad.",
+          "freq": "Encounter",
+          "type": ["Bio", "Healing"],
+          "action": "Immediate Reaction",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "An enemy damages you with an attack",
+          "effect": {
+            "text": "Effect: You regain hit points equal to 3 + your LEVEL. Until the end of your next turn, you gain a +2 power bonus to attack rolls against the triggering enemy.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Yeti Mauling",
+          "flavor": "You overpower your enemy with your rending claws and then drag it off.",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "Effect: Before the attack, the target falls prone.",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + STR + twice your LEVEL physical damage, and you shift 3 squares. You then slide the target 5 squares to any unoccupied square adjacent to you.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    }
+  },
+  "famineInFargo": {
+    "ai": {
+      "name": "AI",
+      "appearance": "Your secondary origin determines your shape, but underneath your exterior (whatever that is) you are a sentient machine.",
+      "type": {
+        "stat": "int",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": ["conspiracy", "mechanics", "nature", "science"],
+        "bonus": "2"
+      },
+      "defense": {
+        "name": "Encrypted Mind",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Active Subroutines",
+          "text": "You don't grant combat advantage while dazed. You can take one standard action on your turn while stunned."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target and each robot you can see becomes dazed until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Blue Screen of Death",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Close blast 3",
+          "target": "Target: Each creature in blast",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. WILL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + INT + your LEVEL psychic damage, and the target takes a -2 penalty to attack rolls until the end of your next turn.",
+            "vars": ["int", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Master Control Program",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Immediate Reaction",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "An ally hit an enemy with an attack",
+          "effect": {
+            "text": "Effect: You can roll twice on your next attack roll against the triggering enemy before the end of your next turn, and use either result.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "End of Line",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Electric", "Psi"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. WILL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: The target is dominated until the start of your next turn. At the start of your next turn, the target takes electric damage equal to twice your LEVEL.",
+            "vars": ["2lvl"]
+          }
+        }
+      }
+    },
+    "alien": {
+      "name": "Alien",
+      "appearance": "",
+      "type": {
+        "stat": "int",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "science",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Inhuman Nature",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Not of this World",
+          "text": "When you draw an Alpha Mutation card, draw two cards: The Game Master decides which one you keep. Shuffle the other back into the deck you drew it from."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you can use alien engineering as a minor action once before the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Alien Engineering",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Radioactive"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: You or one ally",
+          "special": "",
+          "attack": {
+            "text": "",
+            "vars": []
+          },
+          "effect": {
+            "text": "Effect: The target's next weapon attack before the end of the encounter gains a +2 bonus to the attack roll and deals 5 + INT + your LEVEL extra radioactive damage.",
+            "vars": ["int", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Beam Me Up",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Teleportation"],
+          "action": "Move Action",
+          "range": "Melee 1",
+          "target": "Target: You or one ally",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You teleport the target 10 squares. Then roll a d6. On a result of 1 or 6, you can use beam me up an additional time during this encounter.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Nuke it from Orbit",
+          "flavor": "",
+          "freq": "Daily",
+          "type": ["Dark", "Fire", "Radiation"],
+          "action": "Standard Action",
+          "range": "Area burst 5 within 20 squares",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. REFL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d12 + INT + your LEVEL fire and radiation damage.",
+            "vars": ["int", "lvl"]
+          }
+        }
+      }
+    },
+    "arachnoid": {
+      "name": "Arachnoid",
+      "appearance": "",
+      "type": {
+        "stat": "dex",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "nature",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Many-Limbed Maneuverability",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Spider Climber",
+          "text": "Gain a climb speed of 6. ln addition, you can climb across overhanging horizontal surfaces such as ceilings without having to make an Athletics check."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is immobilized until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Toxic Webs",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Poison"],
+          "action": "Standard Action",
+          "range": "Area burst 1 within 10 squares",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs REFL",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + DEX + your LEVEL poison damage, and the target is immobilized until the end of your next turn.",
+            "vars": ["dex", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Scuttling Escape",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: If you are slowed or immobilized, you end that effect. In addition, you shift a number of squares equal to one-half your speed.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Cocooning Webs",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Standard Action",
+          "range": "Melee touch",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX vs. REFL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: The target is blinded and restrained (save ends both). Until the target saves against this effect, whenever you move, you can pull the target up to your speed into a space adjacent to you.",
+            "vars": []
+          }
+        }
+      }
+    },
+    "cryokinetic": {
+      "name": "Cryokinetic",
+      "appearance": "",
+      "type": {
+        "stat": "cha",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "stealth",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Chilling Aura",
+        "text": "Gain a +1 bonus to Fortitude and Reflex.",
+        "type": ["fort", "refl"],
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Frosty the Mutant",
+          "text": "Gain resist 15 cold."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is immobilized until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Icy Grasp",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Cold", "Psi"],
+          "action": "Standard Action",
+          "range": "Melee touch",
+          "target": "One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs FORT",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + CHA + twice your LEVEL cold damage, and the target is slowed until the end of your next turn. If the target is already slowed, it takes 1d6 extra cold damage.",
+            "vars": ["cha", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Icy Slide",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Cold", "Psi"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You fly a number of squares equal to your speed. Each square you exit fills with ice that lasts until the end of your next turn. Ice-filled squares are difficult terrain.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Flash Freeze",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Cold", "Psi", "Zone"],
+          "action": "Standard Action",
+          "range": "Close burst 3",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. FORT",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + CHA + your LEVEL cold damage, and the target is immobilized until the end of your next turn. \nEffect: The burst creates a zone of ice that lasts until the end of your next turn. Squares within the zone are difficult terrain.",
+            "vars": ["cha", "lvl"]
+          }
+        }
+      }
+    },
+    "ectoplasmic": {
+      "name": "Ectoplasmic",
+      "appearance": "",
+      "type": {
+        "stat": "wis",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "perception",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Ghostly",
+        "text": "While you're bloodied, you gain resist 5 to all damage.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "",
+          "text": ""
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you regain hit points equal to your level + 2.",
+      "powers": {
+        "novice": {
+          "name": "Ectoplasmic Plunge",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Psychic"],
+          "action": "Standard Action",
+          "range": "Melee touch",
+          "target": "One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs REFL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + WIS + twice your LEVEL psychic damage. \nEffect: You shift 2 squares to any unoccupied square adjacent to the target.",
+            "vars": ["wis", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Phase Out",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Until the end of your next turn, you ignore difficult terrain, you can move through enemies' squares, and you can move through blocking terrain. You must still end your movement in an unoccupied square.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Scattered Essence",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Psychic"],
+          "action": "Standard Action",
+          "range": "Close burst 3",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. FORT",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 3d6 + WIS + your LEVEL psychic damage, and the target is dazed until the end of your next turn. \nEffect: You shift 3 squares to any unoccupied square in the burst.",
+            "vars": ["wis", "lvl"]
+          }
+        }
+      }
+    },
+    "entropic": {
+      "name": "Entropic",
+      "appearance": "",
+      "type": {
+        "stat": "cha",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "science",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Unordered Luck",
+        "text": "Gain a +1 bonus to AC and Reflex.",
+        "type": ["AC", "refl"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Disordered",
+          "text": "Gain resist 15 necrotic. In addition, whenever you regain hit points, you take a -2 penalty to all defenses until the end of your next turn."
+        }
+      },
+      "critical": "When you score a critical hit, the target also takes ongoing 10 necrotic damage (save ends).",
+      "powers": {
+        "novice": {
+          "name": "Disrupting Touch",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Necrotic"],
+          "action": "Standard Action",
+          "range": "Melee touch",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs FORT",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + CHA + twice your LEVEL necrotic damage, and your attacks deal 5 extra necrotic damage to the target until the end of your next turn.",
+            "vars": ["cha", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Hole in the World",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: Until the end of your next turn, while any creature is within 3 squares of you, it takes a -2 penalty to attack rolls and grants combat advantage.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Creation Undone",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Necrotic"],
+          "action": "Standard Action",
+          "range": "Close burst 5",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. FORT",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + CHA + your LEVEL necrotic damage. If the target is bloodied by this attack, it takes 10 extra necrotic damage.",
+            "vars": ["cha", "lvl"]
+          }
+        }
+      }
+    },
+    "exploding": {
+      "name": "Exploding",
+      "appearance": "",
+      "type": {
+        "stat": "con",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Unordered Luck",
+        "text": "Gain a +1 bonus to Fortitude and Will.",
+        "type": ["fort", "will"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Fireworks",
+          "text": "While you're bloodied, any creature that ends its turn in a space adjacent to you takes 3 fire and sonic damage."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra fire and radiation damage, and each creature adjacent to you takes 5 fire and radiation damage.",
+      "powers": {
+        "novice": {
+          "name": "Controlled Demolition",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Fire", "Psi", "Sonic"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs REFL",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + CON + your LEVEL fire and sonic damage, and you push the target 1 square. lf you're bloodied, this attack deals 1d6 extra damage.",
+            "vars": ["con", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Chain Reaction",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Fire", "Psi", "Sonic"],
+          "action": "Immediate Reaction",
+          "range": "Close burst 2",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "trigger": "Trigger: You take damage from an attack",
+          "effect": {
+            "text": "Effect: You push the target 1d4 squares. lf you push the target 4 squares, it also takes 10 fire and sonic damage.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Nuclear Option",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Fire", "Psi", "Sonic"],
+          "action": "Standard Action",
+          "range": "Close burst 4",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. REFL",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d10 + CON + your LEVEL fire and sonic damage, and you push the target 4 squares. \nEffect: You explode. You can't take any actions and have neither line of sight nor line of effect to any other creature, and no creature has line of sight or line of effect to you, until the end of your next turn. You then re-form in an unoccupied square within 5 squares of your last location.",
+            "vars": ["con", "lvl"]
+          }
+        }
+      }
+    },
+    "fungoid": {
+      "name": "Fungoid",
+      "appearance": "",
+      "type": {
+        "stat": "con",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Mushroom Thoughts",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Healing Spores",
+          "text": "Once per turn when you regain hit points, each ally within 3 squares of you regains hit points equal to your level."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is blinded until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Toxic Spores",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Poison"],
+          "action": "Standard Action",
+          "range": "Close burst 1",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d6 + CON + your LEVEL poison damage, and the target grants combat advantage until the end of your next turn.",
+            "vars": ["con", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Spore Cloud",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Healing", "Zone"],
+          "action": "Free Action",
+          "range": "Close burst 2",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: You take physical damage from an attack while you're bloodied",
+          "effect": {
+            "text": "Effect: The burst creates a zone of spores that lasts until the start of your next turn. Squares within the zone are lightly obscured, and any ally that starts his or her turn within the zone regains hit points equal to 2 + your LEVEL.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Madness Spores",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Poison", "Psi"],
+          "action": "Standard Action",
+          "range": "Close burst 2",
+          "trigger": "",
+          "target": "Target: Each creature in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + CON + your LEVEL poison damage, and the target can't make opportunity attacks until the end of your next turn. If you score a critical hit against the target, it's also dominated until the end of your next turn.",
+            "vars": ["con", "lvl"]
+          }
+        }
+      }
+    },
+    "gelatinous": {
+      "name": "Gelatinous",
+      "appearance": "",
+      "type": {
+        "stat": "str",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "stealth",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Mushroom Thoughts",
+        "text": "Gain a +2 to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Translucent",
+          "text": "At the start of each encounter, you are invisible until you attack or until the end of the encounter."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra acid damage, and you knock the target prone.",
+      "powers": {
+        "novice": {
+          "name": "Paralytic Goo",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Acid", "Bio"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + STR + twice your LEVEL acid damage, and the target is slowed until the start of your next turn.",
+            "vars": ["str", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Flowing Form",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You shift your speed. During this movement, you ignore difficult terrain and can move through enemies' spaces.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Oozy Embrace",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Acid", "Bio"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One Medium or smaller creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. REFL. If the target is slowed, you gain a +4 bonus to the attack roll.",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + STR + twice your LEVEL acid damage, and the target is restrained (save ends). lf you end your turn not adjacent to the target, it's no longer restrained.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    },
+    "magnetic": {
+      "name": "Magnetic",
+      "appearance": "",
+      "type": {
+        "stat": "dex",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "mechanics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Metallic Shields",
+        "text": "Gain a +1 bonus to AC.",
+        "type": "AC",
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Magnetized Body",
+          "text": "Whenever you are pulled, pushed, or slid, you can reduce the distance of the forced movement by 1 square."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is restrained until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Lodestone Lure",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Electricity"],
+          "action": "Minor Action",
+          "range": "Melee 5",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + DEX + twice your LEVEL electricity damage, and you pull the target 3 squares.",
+            "vars": ["dex", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Law of Attraction",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark"],
+          "action": "Minor Action",
+          "range": "Ranged 5",
+          "target": "Target: One ally",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You either pull the target 4 squares, or slide the target 4 squares toward another ally within 5 squares of you.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Magnetic Field",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Electricity"],
+          "action": "Standard Action",
+          "range": "Close burst 3",
+          "trigger": "",
+          "target": "Target: Each enemy in burst",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. Fortitude; if the target is a robot, you gain a +2 power Bonus to the attack roll.",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d6 + DEX + your LEVEL electricity damage, and you pull the target 2 squares. \nEffect: Until the end of your next turn, creatures are restrained while they're adjacent to you.",
+            "vars": ["dex", "lvl"]
+          }
+        }
+      }
+    },
+    "mythic": {
+      "name": "Mythic",
+      "appearance": "",
+      "type": {
+        "stat": "cha",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Divine Luck",
+        "text": "Gain a +1 bonus to Fortitude, Reflex, and Will.",
+        "type": ["fort", "refl", "will"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Enduring Belief",
+          "text": "When you are dying, you don't fall unconscious until you have failed one death saving throw."
+        }
+      },
+      "critical": "When you score a critical hit, one ally you can see can make a basic attack as a free action with a +2 bonus to the attack roll.",
+      "powers": {
+        "novice": {
+          "name": "Mythic Strike",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Electricity"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL + Weapon Accuracy vs AC",
+            "vars": ["cha", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + CHA + your LEVEL physical damage, and one ally within 5 squares of you gains either a +2 bonus to saving throws until the start of your next turn or 5 temporary hit points.",
+            "vars": ["cha", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Miraculous Recovery",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Healing", "Psi"],
+          "action": "Minor Action",
+          "range": "Close burst 1",
+          "target": "Target: You and each ally in burst",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: The target either makes a saving throw or regains hit points equal to your LEVEL.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Divine Judgment",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Electricity", "Psi", "Sonic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "trigger": "",
+          "target": "Target: One, two or three creatures",
+          "special": "",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. REFL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d6 + CHA + your LEVEL electricity and sonic damage, and the target is dazed until the end of your next turn.",
+            "vars": ["cha", "lvl"]
+          }
+        }
+      }
+    },
+    "nightmare": {
+      "name": "Nightmare",
+      "appearance": "",
+      "type": {
+        "stat": "int",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Master of Terror",
+        "text": "Gain a +2 bonus to Will.",
+        "type": "will",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Insidious Mind",
+          "text": "Whenever you hit an enemy with a psi attack, you can also slide that enemy 2 squares."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target moves its speed away from you as a free action.",
+      "powers": {
+        "novice": {
+          "name": "Fear Manifested",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs Will",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d8 + INT + twice your LEVEL psychic damage, and until the end of your next turn, the target grants combat advantage and takes a -2 penalty to attack rolls.",
+            "vars": ["int", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Secret Face",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Minor Action",
+          "range": "Ranged 10",
+          "target": "Target: One ally",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: The target either makes a saving throw or regains hit points equal to rolls against the target.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Fears Revealed",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Psi", "Psychic"],
+          "action": "Standard Action",
+          "range": "Ranged 10",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: INT + LEVEL vs. WILL",
+            "vars": ["int", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + INT + twice your LEVEL psychic damage. In addition, until the end of your next turn, the target takes a -2 penalty to attack rolls and whenever a creature hits the target with an attack, that creature pushes the target 1 square.",
+            "vars": ["int", "2lvl"]
+          }
+        }
+      }
+    },
+    "plaguebearer": {
+      "name": "Plaguebearer",
+      "appearance": "",
+      "type": {
+        "stat": "con",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Strengthened by Plague",
+        "text": "Gain a +2 bonus to Fortitude.",
+        "type": "fort",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Typhoid Mary/Marvin",
+          "text": "You are immune to disease and gain resist 10 necrotic."
+        }
+      },
+      "critical": "When you score a critical hit, the target takes ongoing 10 necrotic damage (save ends).",
+      "powers": {
+        "novice": {
+          "name": "Infected Touch",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Necrotic"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT. If the target is taking ongoing damage, you gain a +2 bonus to the attack roll.",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + CON + twice your LEVEL necrotic damage, and until the end of your next turn, the target is slowed and can't take immediate actions or opportunity actions.",
+            "vars": ["con", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Leprosy Splash",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Necrotic", "Poison", "Zone"],
+          "action": "Immediate Reaction",
+          "range": "Close burst 2",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: An enemy bloodies you",
+          "effect": {
+            "text": "Effect: Your body bursts into a cloud of disease, creating a zone of pestilence that lasts until the start of your next turn. While you're under this effect, you can't take any actions and have neither line of sight nor line of effect to any creature, and no creature has line of sight or line of effect to you. ln addition, enemies treat squares within the zone as difficult terrain, and whenever an enemy within the zone takes damage from an attack, it takes 5 extra necrotic and poison damage. At the start of your next turn, you reform in any square within the burst.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Gifts of Pestilence",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Necrotic"],
+          "action": "Standard Action",
+          "range": "Close burst 3",
+          "trigger": "",
+          "target": "Target: Each creature in blast",
+          "special": "",
+          "attack": {
+            "text": "Attack: CON + LEVEL vs. FORT",
+            "vars": ["con", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d6 + CON + your LEVEL necrotic damage, and the target is dazed, slowed, and takes ongoing 5 necrotic damage (save ends all).",
+            "vars": ["con", "lvl"]
+          }
+        }
+      }
+    },
+    "plastic": {
+      "name": "Plastic",
+      "appearance": "",
+      "type": {
+        "stat": "dex",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "acrobatics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Bend but Not Break",
+        "text": "Gain a +1 bonus to Fortitude and Reflex.",
+        "type": ["fort", "refl"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Malleability",
+          "text": "You can compress your body to fit through a 1-inchwide crack. You don't become slowed or grant combat advantage while squeezing in this way."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is restrained until you end your turn not adjacent to it.",
+      "powers": {
+        "novice": {
+          "name": "Stretchy Arms",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee 3",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + DEX + your LEVEL physical damage, and you pull the target 2 squares.",
+            "vars": ["dex", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Body Shield",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Immediate Reaction",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: An attack hits an ally within 2 squares of you.",
+          "effect": {
+            "text": "Effect: The triggering attack hits you instead. You take only half damage from the attack.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Wrap It Up",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 3",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: DEX + LEVEL vs. REFL",
+            "vars": ["dex", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d8 + DEX + twice your LEVEL physical damage. In addition, while you're adjacent to the targel, it's restrained and takes ongoing 10 physical damage (save ends both).",
+            "vars": ["dex", "2lvl"]
+          }
+        }
+      }
+    },
+    "prescient": {
+      "name": "Prescient",
+      "appearance": "",
+      "type": {
+        "stat": "wis",
+        "power": "Psi",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Not Surprised",
+        "text": "Gain a +1 bonus to AC and Will.",
+        "type": ["AC", "will"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Third Eye Awareness",
+          "text": "Gain a +2 bonus to opportunity attack rolls and a +4 bonus to initiative checks. (Not calculated automatically)"
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target grants combat advantage until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Thwarted Defense",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Physical", "Psi", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + WIS + your LEVEL physical damage, and the target can't shift until the end of your next turn.",
+            "vars": ["wis", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Instinctive Shift",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Psi"],
+          "action": "Immediate Interrupt",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: An enemy adjacent to you hits you",
+          "effect": {
+            "text": "Effect: You gain a +4 bonus to all defenses against the triggering attack. If the attack misses, you can shift 1 square.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Cunning Prediction",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Psi", "Physical"],
+          "action": "Standard Action",
+          "range": "Ranged 5",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL vs. WILL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: The next ally to hit the target automatically scores a critical hit.",
+            "vars": []
+          }
+        }
+      }
+    },
+    "reanimated": {
+      "name": "Reanimated",
+      "appearance": "",
+      "type": {
+        "stat": "str",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Undead Recuperation",
+        "text": "You are immune to disease, and whenever you start your turn and have at least 1 hit point, you regain hit points equal to your LEVEL.",
+        "type": "",
+        "bonus": ""
+      },
+      "levelOne": {
+        "one": {
+          "name": "Slow",
+          "text": "Reduce your speed by 1. (Not calculated automatically)"
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target is dazed until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Nasty Bite",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Healing", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL vs. FORT",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2d6 + STR + twice your LEVEL physical damage. If you score a critical hit, you also regain 5 + your level hit points.",
+            "vars": ["str", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Zombie Surprise",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Healing"],
+          "action": "No Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: You start your turn with 0 hit points or fewer",
+          "effect": {
+            "text": "Effect: You regain hit points equal to your level and stand up.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Grisly Feast",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee 1",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL + 2 vs. AC",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + STR + twice your LEVEL physical damage, and you knock the target prone. In addition, until the target starts its turn in a square not adjacent to you, it takes 5 physical damage whenever it starts its turn adjacent to you.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    },
+    "shapeshifter": {
+      "name": "Shapeshifter",
+      "appearance": "",
+      "type": {
+        "stat": "cha",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "interaction",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Rippling Flesh",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Subtle Movements",
+          "text": "You can shift 1 square as a minor action."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target grants combat advantage until the end of your next turn.",
+      "powers": {
+        "novice": {
+          "name": "Shapeshifter's Feint",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee weapon",
+          "target": "Target: One creature",
+          "special": "Effect: You assume the form of any Medium humanoid until you change form again. You retain your statistics in your new form, and your clothing, armor, and possessions do not change. You gain a +5 power bonus to Interaction checks to fool others with your disguise. You can choose not to make the attack.",
+          "attack": {
+            "text": "Attack: CHA + LEVEL vs. REFL",
+            "vars": ["cha", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + CHA + your LEVEL physical damage. It you changed your form to resemble the target, you gain a +2 power bonus to all defenses until the end of your next turn while the target is within 2 squares of you.",
+            "vars": ["cha", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Who, ME?",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You assume the form of a Tiny beast until the end of the encounter, until you change back to your previous form as a minor action, or until you change your form again. While in this form, you gain a +3 power bonus to speed and to all defenses, you do not provoke opportunity attacks for moving, and you cannot attack.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Big Scary Monster",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "trigger": "",
+          "target": "",
+          "special": "",
+          "attack": {
+            "text": "",
+            "vars": []
+          },
+          "effect": {
+            "text": "Effect: You assume the form of a big scary monster (although you remain a Medium creature) until the end of the encounter, until you dismiss the form as a minor action, or until you change your form again. While in this form, enemies take a -2 penalty to attack rolls against you. You can make the following at-will attack while in this form. \nStandard Action \nMelee 2 \nTarget: One Creature \nAttack: CHA + LEVEL vs. AC \nHit: 2d6 + CHA + twice your LEVEL physical damage.",
+            "vars": ["str", "2lvl"]
+          }
+        }
+      }
+    },
+    "simian": {
+      "name": "Simian",
+      "appearance": "",
+      "type": {
+        "stat": "str",
+        "power": "Bio",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Monkey Tough, Monkey Fast",
+        "text": "Gain a +1 bonus to Fortitude and Reflex.",
+        "type": ["fort", "refl"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Agile Monkey",
+          "text": "Gain a +1 bonus to Speed."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you push the target 2 squares.",
+      "powers": {
+        "novice": {
+          "name": "Ape Rage",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Bio", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL + Weapon Accuracy vs. AC",
+            "vars": ["str", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + 1d6 + STR + your LEVEL physical damage, and you gain a +2 power bonus to your next attack roll against the target before the end of your next turn.",
+            "vars": ["str", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Monkey Leap",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You make an Athletics check to jump and gain a +5 power bonus. Each enemy adjacent to you at the end of the jump grants combat advantage to you until end of your next turn.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Expert Ape Training",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Bio", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged Weapon",
+          "trigger": "",
+          "target": "",
+          "special": "",
+          "attack": {
+            "text": "Attack: STR + LEVEL + Weapon Accuracy + 2 vs. AC",
+            "vars": ["str", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 2[W] + STR + your LEVEL physical damage, and each enemy within 3 squaares of you grants combat advantage to you until the end of your next turn.",
+            "vars": ["str", "lvl"]
+          }
+        }
+      }
+    },
+    "temporal": {
+      "name": "Temporal",
+      "appearance": "",
+      "type": {
+        "stat": "wis",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "conspiracy",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Too Slow!",
+        "text": "Gain a +2 bonus to AC.",
+        "type": "AC",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Temporal Advantage",
+          "text": "Gain a +5 bonus to Initiative checks. (Not calculated automatically)"
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you teleport the target 2d6 squares.",
+      "powers": {
+        "novice": {
+          "name": "Temporal Fugue",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Physical", "Teleportation"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL + Weapon Accuracy vs. REFL",
+            "vars": ["wis", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + WIS + your LEVEL physical damage, you teleport the target 4 squares, and the target is dazed until the end of your next turn.",
+            "vars": ["wis", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Temporal Jaunt",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Teleportation"],
+          "action": "No Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: You end your turn",
+          "effect": {
+            "text": "Effect: You disappear into the future until the start of your next turn. While under this effect, you can't take actions and have neither line of sight nor line of effect to any creature, and no creature has line of sight or line of effect to you. You reappear in an unoccupied square within 5 squares of the square you last occupied.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Time Shove",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged Weapon",
+          "trigger": "",
+          "target": "",
+          "special": "",
+          "attack": {
+            "text": "Attack: WIS + LEVEL + Weapon Accuracy vs. REFL",
+            "vars": ["wis", "lvl"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + WIS + your LEVEL physical damage, and the target disappears into the future until the end of your next turn. While under this effect, the target can't take actions and has neither line of sight nor line of effect to any creature, and no creature has line ol sight or line of effect to it. It reappears in an unoccupied square of your choice within 5 squares of you.",
+            "vars": ["wis", "lvl"]
+          }
+        }
+      }
+    },
+    "wheeled": {
+      "name": "Wheeled",
+      "appearance": "",
+      "type": {
+        "stat": "con",
+        "power": "Dark",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": "athletics",
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Great Turning Radius",
+        "text": "Gain a +2 bonus to Reflex.",
+        "type": "refl",
+        "bonus": "2"
+      },
+      "levelOne": {
+        "one": {
+          "name": "All-Wheel Drive",
+          "text": "You ignore difficult terrain and gain a +1 bonus to speed. (Not calculated automatically)"
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and you knock the target prone. You can then shift your speed.",
+      "powers": {
+        "novice": {
+          "name": "Maximum Overdrive",
+          "flavor": "",
+          "freq": "At-Will",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee weapon",
+          "target": "Target: One creature",
+          "special": "Effect: Before the attack, you shift 2 squares.",
+          "attack": {
+            "text": "Attack: CON + LEVEL + Weapon Accuracy vs. REFL",
+            "vars": ["con", "lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1[W] + CON + your LEVEL physical damage, and the target takes a -2 penalty to attack rolls against your allies until the end of your next turn.",
+            "vars": ["con", "lvl"]
+          }
+        },
+        "utility": {
+          "name": "Burning Rubber",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Fire"],
+          "action": "Move Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "Trigger: You end your turn",
+          "effect": {
+            "text": "Effect: You move your speed + 2. Each square you leave is filled with fire until the start of your next turn. Any creature that enters a fire square or starts its turn there takes 5 fire damage.",
+            "vars": []
+          }
+        },
+        "expert": {
+          "name": "Monster Truck",
+          "flavor": "",
+          "freq": "Encounter",
+          "type": ["Dark", "Physical"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged Weapon",
+          "trigger": "",
+          "target": "",
+          "special": "",
+          "attack": {
+            "text": "",
+            "vars": []
+          },
+          "effect": {
+            "text": "Effect: You move your speed. You can move through enemies' spaces during this move, provided you end the move in an unoccupied space. Make the following attack against each enemy the first time you enter its space during this movement. \nFree Action \n Melee 1 \n Target: One creature \n Attack: CON + LEVEL vs. REFL \nHit: 2d8 + CON + your LEVEL physical damage, and you knock the target prone.",
+            "vars": ["wis", "lvl"]
+          }
+        }
+      }
+    }
+  },
+  "special": {
+    "human": {
+      "name": "Human, Engineered",
+      "appearance": "Most engineered humans possess heroic proportions and dashing good looks, because the genetic scientists who cooked the DNA generations ago were trying to build a better human... and, well, why not?",
+      "type": {
+        "stat": "int",
+        "power": "All",
+        "bonus": "2"
+      },
+      "skill": {
+        "type": ["interaction", "science"],
+        "bonus": "4"
+      },
+      "defense": {
+        "name": "Engineered Resilience",
+        "text": "Gain a +1 bonus to Fortitude, Reflex, and Will.",
+        "type": ["fort", "refl", "will"],
+        "bonus": "1"
+      },
+      "levelOne": {
+        "one": {
+          "name": "Tech Affinity",
+          "text": "Gain a +2 bonus to checks to see if your Omega Tech burns out."
+        }
+      },
+      "critical": "When you score a critical hit, the attack deals 1d10 extra damage, and the target grants combat advantage until the end of your next turn .",
+      "powers": {
+        "novice": {
+          "name": "Bold Attack",
+          "flavor": "Your instinct for violence inspires your allies to follow your lead.",
+          "freq": "At-Will",
+          "type": ["Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "target": "Target: One creature",
+          "special": "",
+          "attack": {
+            "text": "Attack: LEVEL + 4 + Weapon Accuracy vs. AC",
+            "vars": ["lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 1d10 + STR + twice your LEVEL physical damage, and the target is slowed until the end of your next turn.",
+            "vars": ["str", "2lvl"]
+          }
+        },
+        "utility": {
+          "name": "Tough as Nails",
+          "flavor": "You're tougher than you look.",
+          "freq": "Encounter",
+          "type": ["Healing"],
+          "action": "Minor Action",
+          "range": "Personal",
+          "target": "",
+          "special": "",
+          "trigger": "",
+          "effect": {
+            "text": "Effect: You regain hit points equal to 5 + your LEVEL and make a saving throw with a +5 bonus.",
+            "vars": ["lvl"]
+          }
+        },
+        "expert": {
+          "name": "Tactical Assault",
+          "flavor": "As you attack, you tell your allies where to go so they can get in on the fun, too.",
+          "freq": "Encounter",
+          "type": ["Physical", "Weapon"],
+          "action": "Standard Action",
+          "range": "Melee or Ranged weapon",
+          "trigger": "",
+          "target": "Target: One creature",
+          "special": "Effect: Before the attack, each ally within 10 squares of you can shift 2 squares as a free action.",
+          "attack": {
+            "text": "Attack: LEVEL + 4 + Weapon Accuracy vs. AC",
+            "vars": ["lvl", "weapon"]
+          },
+          "effect": {
+            "text": "Hit: 3[W] + INT + your LEVEL physical damage.",
+            "vars": ["int", "lvl"]
+          }
+        }
+      }
+    }
+  }
+}

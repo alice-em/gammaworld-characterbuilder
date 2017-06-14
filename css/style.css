@@ -1,0 +1,158 @@
+body {
+  font-family: "Open Sans", sans-serif;
+}
+
+strong, label {
+  font-family: "Righteous", cursive;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+
+#powers-table {
+  border: 1px solid black;
+  position: relative;
+}
+
+.clear {
+  clear: both;
+}
+
+header {
+  position: relative;
+  border-bottom: 1px solid #000;
+}
+header input {
+  font-size: 16px;
+  font-family: "Righteous", cursive;
+  border: none;
+  border-bottom: 1px solid black;
+  transition: box-shadow 0.75s;
+  box-shadow: 0 0 0 #fff;
+}
+header input:focus {
+  outline: none;
+  box-shadow: 0 1px 1px #000;
+}
+header #origins {
+  float: right;
+}
+header #hitPoints {
+  float: left;
+  padding-right: 5px;
+}
+header #ability-table {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+}
+header #ability-table strong {
+  float: right;
+}
+header #ability-table .stat-cell {
+  display: inline-block;
+  border: 1px solid black;
+  margin-left: 2px;
+  padding-right: 5px;
+}
+header #ability-table .stat-cell .ability-mod {
+  font-size: 24px;
+  font-family: "Nova Mono", monospace;
+  display: inline-block;
+  width: 40px;
+  text-align: right;
+  float: left;
+  padding-right: 1px;
+}
+header #ability-table .stat-cell .ability-name {
+  float: right;
+  font-size: 10px;
+  padding-top: 4px;
+  text-align: right;
+}
+header #ability-table .stat-cell .ability-score {
+  font-size: 10px;
+  display: block;
+  text-align: right;
+}
+
+article {
+  position: relative;
+}
+article #skill-table {
+  float: right;
+}
+article #skill-table strong {
+  float: right;
+}
+article #skill-table li {
+  border: 1px solid #000;
+  border-bottom: none;
+  padding: 0 5px;
+}
+article #skill-table li:last-of-type {
+  border-bottom: 1px solid #000;
+}
+article #skill-table ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+article #traits strong {
+  padding-top: 10px;
+  display: inline-block;
+}
+article #traits strong:first-of-type {
+  padding-top: 0;
+}
+
+#powers-table strong {
+  display: block;
+  padding: 5px;
+  background: #063b71;
+  color: #fff;
+}
+#powers-table em {
+  display: block;
+  background: #bbb;
+}
+#powers-table .powers-min {
+  padding: 2px;
+}
+#powers-table .attack {
+  background: #bbb;
+}
+#powers-table .attack, #powers-table .effect {
+  display: block;
+  padding: 2px;
+}
+#powers-table .effect {
+  border-top: 1px solid #bbb;
+}
+
+#gear textarea {
+  width: 50%;
+  height: 100px;
+}
+
+.mono {
+  font-family: "Nova Mono", monospace;
+  width: 20px;
+  text-align: right;
+  display: inline-block;
+  border-right: 3px double #000;
+  padding-right: 2px;
+}
+
+@media print {
+  #powers-table strong {
+    background: #fff;
+    color: #000;
+    border-bottom: 1px solid #000;
+  }
+
+  .novice div, .utility div, .expert div {
+    page-break-inside: avoid;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

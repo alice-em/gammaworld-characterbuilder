@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gamma World 7th Edition: Character Builder</title>
+  <meta name="description" content="Gamma World 7th Edition: Character Builder">
+  <meta name="author" content="Alice Maldonado">
+  <link href="https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans:300,400|Righteous" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div id="load-animation">
+
+  </div>
+  <div id="options">
+
+  </div>
+  <div id="character-sheet">
+    <header>
+      <label>Name:</label>
+      <input type="text" placeholder="" />
+      <div id="origins" class="levelOne"></div>
+      <label>Level:</label>
+      <input type="number" id="level" class="levelOne" value="1" placeholder="Level">
+      <br class="clear" />
+      <div id="hitPoints" class="levelOne"></div>
+      <div id="bloodied" class="levelOne"></div>
+      <div id="mutations" class="levelOne"></div>
+      <div id="ability-table" class="levelOne"></div>
+      <div id="defenses" class="levelOne"></div>
+    </header>
+    <article>
+      <div id="skill-table" class="levelOne"></div>
+      <div id="traits" class="levelOne"></div>
+      <div id="critical" class="levelOne">
+        <div id="mainCritical" class="levelTwo"></div>
+        <div id="secondaryCritical" class="levelSix"></div>
+      </div>
+    </article>
+    <div id="attacks" class="levelOne"></div>
+    <div id="powers-table" class="levelOne">
+      <div class="novice">
+        <div id="mainNovice"></div>
+        <div id="secondaryNovice"></div>
+      </div>
+      <div class="utility levelThree">
+        <div id="mainUtility"></div>
+        <div id="secondaryUtility"></div>
+      </div>
+      <div class="expert levelFive">
+        <div id="mainExpert"></div>
+        <div id="secondaryExpert"></div>
+      </div>
+    </div>
+    <div id="uber" class="levelTen"></div>
+    <div id="gear" class="levelOne">
+      <strong>Gear:</strong><br />
+      <textarea rows="4" cols="50"></textarea>
+    </div>
+  </div>
+  <script src="js/character.js"></script>
+</body>
+</html>
