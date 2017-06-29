@@ -148,6 +148,7 @@ levelUp = (alpha, beta, level) => {
       _id('mainNovice').innerHTML = generate.power(alpha.powers.novice);
       _id('secondaryNovice').innerHTML = generate.power(beta.powers.novice);
   }
+  console.dir(character);
 };
 
 // ---- Random Character Generation!

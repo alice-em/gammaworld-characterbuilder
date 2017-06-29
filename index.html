@@ -8,6 +8,7 @@
   <meta name="author" content="Alice Maldonado">
   <link href="https://fonts.googleapis.com/css?family=Nova+Mono|Open+Sans:300,400|Righteous" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.4/angular.min.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,7 @@
   <div id="options">
 
   </div>
-  <div id="character-sheet">
+  <div id="character-sheet" ng-app="characterBuilder">
     <header>
       <label>Name:</label>
       <input type="text" placeholder="" />
@@ -27,12 +28,24 @@
       <br class="clear" />
       <div id="hitPoints" class="levelOne"></div>
       <div id="bloodied" class="levelOne"></div>
-      <div id="mutations" class="levelOne"></div>
-      <div id="ability-table" class="levelOne"></div>
+      <div id="mutations" class="levelOne"><strong>Alpha Mutations:</strong> {{ i.mutation }}</div>
+      <div id="ability-table" class="levelOne">
+        <strong>Stats</strong><br />
+        <div class="stat-cell"> <!-- Render 6 times -->
+          <div class="ability-mod">{{ character.mod(stats[i]) }}</div>
+          <div class="ability-name">{{ stats[i].toUpperCase() }}</div>
+          <div class="ability-score">{{ character.ability[stats[i]] }}</div>
+        </div>
+      </div>
       <div id="defenses" class="levelOne"></div>
     </header>
     <article>
-      <div id="skill-table" class="levelOne"></div>
+      <div id="skill-table" class="levelOne">
+        <strong>Skills</strong>
+        <ul> <!-- Render 10 times -->
+          <li><span class="mono">{{ character.skills[skills[i]] }}</span> {{ app.character.skill[skill] }}</li>`;
+        </ul>
+      </div>
       <div id="traits" class="levelOne"></div>
       <div id="critical" class="levelOne">
         <div id="mainCritical" class="levelTwo"></div>
