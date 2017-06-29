@@ -7,8 +7,11 @@ function greaterOf(one, two) {
     ? one
     : two;
 }
-function stringify(ARRAY) {
-  return ARRAY.join(', ');
+function stringify(arr) {
+  let s = Array.isArray(arr)
+    ? arr.join(', ')
+    : '';
+  return s;
 }
 function isThere(item) {
   return item.name.length > 0
