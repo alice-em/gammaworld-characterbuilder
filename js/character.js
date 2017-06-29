@@ -1,5 +1,5 @@
 // Shorthand
-function _id (ID) {
+function _id(ID) {
   return document.getElementById(ID);
 }
 function greaterOf(one, two) {
@@ -9,12 +9,8 @@ function greaterOf(one, two) {
     return two;
   }
 }
-function stringify(item) {
-  if (Array.isArray(item)) {
-    return item.join(', ');
-  } else {
-    return item;
-  }
+function stringify(ARRAY) {
+  return ARRAY.join(', ');
 }
 function isThere(item) {
   if (item.name.length > 0) {
@@ -31,11 +27,10 @@ function isThereDefense(origin) {
   }
 }
 function isThereExtra(levelOne) {
-  let text = '';
-  text = isThere(levelOne.one);
-  if (levelOne.two) {
-    text += isThere(levelOne.two);
-  }
+  let text = isThere(levelOne.one);
+  text += levelOne.two
+    ? isThere(levelOne.two)
+    : '';
   return text;
 }
 
@@ -43,30 +38,119 @@ function isThereExtra(levelOne) {
 const originsURL = 'https://alice-em.github.io/gammaworld-characterbuilder/js/origins.json';
 
 // Different Origins
-const core = ['android', 'cockroach', 'doppelganger', 'electrokinetic', 'empath', 'felinoid', 'giant', 'gravity controller', 'hawkoid', 'hypercognitive', 'mind breaker', 'mind coercer', 'plant', 'pyrokinetic', 'radioactive', 'rat swarm', 'seismic', 'speedster', 'telekinetic', 'yeti'];
-const famineInFargo = ['ai', 'alien', 'arachnoid', 'cryokinetic', 'ectoplasmic', 'entropic', 'exploding', 'fungoid', 'gelatinous', 'magnetic', 'mythic', 'nightmare', 'plaguebearer', 'plastic', 'prescient', 'reanimated', 'shapeshifter', 'simian', 'temporal', 'wheeled'];
+const core = [
+  'android',
+  'cockroach',
+  'doppelganger',
+  'electrokinetic',
+  'empath',
+  'felinoid',
+  'giant',
+  'gravity controller',
+  'hawkoid',
+  'hypercognitive',
+  'mind breaker',
+  'mind coercer',
+  'plant',
+  'pyrokinetic',
+  'radioactive',
+  'rat swarm',
+  'seismic',
+  'speedster',
+  'telekinetic',
+  'yeti'
+];
+const famineInFargo = [
+  'ai',
+  'alien',
+  'arachnoid',
+  'cryokinetic',
+  'ectoplasmic',
+  'entropic',
+  'exploding',
+  'fungoid',
+  'gelatinous',
+  'magnetic',
+  'mythic',
+  'nightmare',
+  'plaguebearer',
+  'plastic',
+  'prescient',
+  'reanimated',
+  'shapeshifter',
+  'simian',
+  'temporal',
+  'wheeled'
+];
 
 // Object Declarations
-let character, origins, skills, stats;
+let character,
+  origins,
+  skills,
+  stats;
 // Function Declarations
-let getJSON, levelUp, reset, threeDSix;
+let getJSON,
+  levelUp,
+  reset,
+  threeDSix;
 // Function Objects
-let generate = {}, origin = {}, skill = {};
+let generate = {},
+  origin = {},
+  skill = {};
 
 character = {
   ability: {
-    'str': '10', 'dex': '10', 'con': '10', 'int': '10', 'wis': '10', 'cha': '10'
+    'str': '10',
+    'dex': '10',
+    'con': '10',
+    'int': '10',
+    'wis': '10',
+    'cha': '10'
   },
-  bonus: {'AC': 0, 'fort': 0, 'refl': 0, 'will': 0},
+  bonus: {
+    'AC': 0,
+    'fort': 0,
+    'refl': 0,
+    'will': 0
+  },
   level: '1',
-  mod: function(stat) { return Math.floor((this.ability[stat] - 10) * 0.5); },
+  mod: function(stat) {
+    return Math.floor((this.ability[stat] - 10) * 0.5);
+  },
   skills: {
-    'acrobatics': '', 'athletics': '', 'conspiracy': '', 'insight': '', 'interaction': '', 'mechanics': '', 'nature': '', 'perception': '', 'science': '', 'stealth': ''
+    'acrobatics': '',
+    'athletics': '',
+    'conspiracy': '',
+    'insight': '',
+    'interaction': '',
+    'mechanics': '',
+    'nature': '',
+    'perception': '',
+    'science': '',
+    'stealth': ''
   }
 };
 
-skills = ['acrobatics', 'athletics', 'conspiracy', 'insight', 'interaction', 'mechanics', 'nature', 'perception', 'science', 'stealth'];
-stats = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
+skills = [
+  'acrobatics',
+  'athletics',
+  'conspiracy',
+  'insight',
+  'interaction',
+  'mechanics',
+  'nature',
+  'perception',
+  'science',
+  'stealth'
+];
+stats = [
+  'str',
+  'dex',
+  'con',
+  'int',
+  'wis',
+  'cha'
+];
 
 // JSON
 getJSON = (url, callback) => {
@@ -74,7 +158,9 @@ getJSON = (url, callback) => {
   xhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
       let data = JSON.parse(this.responseText);
-      if (data) { callback(data); }
+      if (data) {
+        callback(data);
+      }
     }
   };
   xhttp.open('GET', url, true);
@@ -87,9 +173,15 @@ generate.power = (power) => {
   <em>${power.flavor}</em>
   <div class="powers-min">${stringify(power.type)}<br />
   ${power.action} <span style="float:right">${power.range}</span><br />`;
-  if(power.special) { text += `${power.special} <br />`; }
-  if(power.target) { text += `${power.target} <br />`; }
-  if(power.trigger) { text += `${power.trigger} <br />`; }
+  if (power.special) {
+    text += `${power.special} <br />`;
+  }
+  if (power.target) {
+    text += `${power.target} <br />`;
+  }
+  if (power.trigger) {
+    text += `${power.trigger} <br />`;
+  }
   text += '</div>';
   if (power.attack && power.attack.text.length > 0) {
     text += `<div class="attack">${power.attack.text}</div>`;
@@ -101,7 +193,7 @@ generate.power = (power) => {
 levelUp = (alpha, beta, level) => {
   let mutation = 1;
   character.level = level;
-  switch(level) {
+  switch (level) {
     case 10:
       _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
     case 9:
@@ -124,13 +216,13 @@ levelUp = (alpha, beta, level) => {
       mutation = greaterOf(mutation, 1);
       _id('mutations').innerHTML = `<strong>Alpha Mutations:</strong> ${mutation}`;
       _id('origins').innerHTML = `α: ${alpha.name} | β: ${beta.name}`;
-      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${12 + character.mod('con')}`;
+      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
       _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
       _id('defenses').innerHTML = `
         <strong>AC:</strong> ${Number(10 + level) + character.bonus.AC} + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${10 + level + greaterOf(character.mod('str'), character.mod('con')) + character.bonus.fort}<br />
-        <strong>Reflex:</strong> ${10 + level + greaterOf(character.mod('dex'), character.mod('int')) + character.bonus.refl}<br />
-        <strong>Will:</strong>  ${10 + level + greaterOf(character.mod('wis'), character.mod('cha')) + character.bonus.will}`;
+        <strong>Fort:</strong> ${ 10 + level + greaterOf(character.mod('str'), character.mod('con')) + character.bonus.fort}<br />
+        <strong>Reflex:</strong> ${ 10 + level + greaterOf(character.mod('dex'), character.mod('int')) + character.bonus.refl}<br />
+        <strong>Will:</strong>  ${ 10 + level + greaterOf(character.mod('wis'), character.mod('cha')) + character.bonus.will}`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
@@ -153,21 +245,22 @@ levelUp = (alpha, beta, level) => {
 // ---- Random Character Generation!
 // ---------------------------------
 generate.defense = (defense) => {
-  if (defense.type.length > 0 && Array.isArray(defense.type)) {
+  if (defense.type.length > 0) {
     for (let i = 0; i < defense.type.length; i++) {
       character.bonus[defense.type[i]] += Number(defense.bonus);
     }
-  } else if (defense.type.length > 0) {
-    character.bonus[defense.type] += Number(defense.bonus);
   }
 };
 
 generate.random = (origins) => {
-  let alpha, beta;
-  alpha = origin.random(origins);
-  beta = origin.random(origins);
-  if (alpha.name === beta.name) { beta = origins.special.human; }
-  for (let i = 0; i < 6; i++) { character.ability[stats[i]] = threeDSix(); }
+  let alpha = origin.random(origins);
+  let beta = origin.random(origins);
+  if (alpha.name === beta.name) {
+    beta = origins.special.human;
+  }
+  for (let i = 0; i < 6; i++) {
+    character.ability[stats[i]] = threeDSix();
+  }
   if (alpha.type.stat === beta.type.stat) {
     character.ability[alpha.type.stat] = 20;
   } else {
@@ -187,7 +280,9 @@ generate.random = (origins) => {
 };
 
 origin.random = (data) => {
-  let book, number, origin;
+  let book,
+    number,
+    origin;
   number = Math.floor(Math.random() * 20 + 1);
   if (number >= 11) {
     book = 'core';
@@ -256,12 +351,8 @@ skill.assignment = (alpha, beta) => {
 };
 
 skill.origin = (originSkill) => {
-  if (Array.isArray(originSkill.type)) {
-    for (let i = 0; i < originSkill.type.length; i++) {
-      character.skills[originSkill.type[i]] += Number(originSkill.bonus);
-    }
-  } else {
-    character.skills[originSkill.type] += Number(originSkill.bonus);
+  for (let i = 0; i < originSkill.type.length; i++) {
+    character.skills[originSkill.type[i]] += Number(originSkill.bonus);
   }
 };
 

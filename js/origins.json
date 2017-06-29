@@ -9,13 +9,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "science",
+        "type": ["science"],
         "bonus": "4"
       },
       "defense": {
         "name": "Built to Last",
         "text": "Gain a +2 bonus to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -89,13 +89,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "mechanics",
+        "type": ["mechanics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Scurry and Skitter",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -169,13 +169,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "conspiracy",
+        "type": ["conspiracy"],
         "bonus": "4"
       },
       "defense": {
         "name": "Not Really There",
         "text": "Gain a +2 bonus to Reflex",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -249,13 +249,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "mechanics",
+        "type": ["mechanics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Lightning Reflexes",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -329,13 +329,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "insight",
+        "type": ["insight"],
         "bonus": "4"
       },
       "defense": {
         "name": "Pacifying Aura",
         "text": "You and each ally adjacent to you never grant combat advantage.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -409,13 +409,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "stealth",
+        "type": ["stealth"],
         "bonus": "4"
       },
       "defense": {
         "name": "Catlike Reflexes",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -493,13 +493,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Just Tough",
         "text": "Gain a +2 bonus to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -573,13 +573,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "It Fell Sideways!",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -653,13 +653,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "perception",
+        "type": ["perception"],
         "bonus": "4"
       },
       "defense": {
         "name": "",
         "text": "",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -733,13 +733,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "insight",
+        "type": ["insight"],
         "bonus": "4"
       },
       "defense": {
         "name": "Forseen Consequences",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -813,13 +813,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Unbreakable Mind",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -893,13 +893,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Labyrinthine Mind",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -973,13 +973,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "nature",
+        "type": ["nature"],
         "bonus": "4"
       },
       "defense": {
         "name": "Hardened Bark",
         "text": "Gain a +2 bonus to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1053,13 +1053,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Fire Resistance",
         "text": "Gain resist 10 fire.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -1133,13 +1133,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "science",
+        "type": ["science"],
         "bonus": "4"
       },
       "defense": {
         "name": "You've had Worse",
         "text": "Gain a +2 bonus to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1213,13 +1213,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "stealth",
+        "type": ["stealth"],
         "bonus": "4"
       },
       "defense": {
         "name": "Swarm Defense",
         "text": "Gain resist 5 to all damage against melee and ranged attacks, and vulnerable 5 to damage from area and close attacks.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -1293,13 +1293,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Armored Skin",
         "text": "Gain resist 5 physical.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -1373,13 +1373,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "acrobatics",
+        "type": ["acrobatics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Just a Blur",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1453,7 +1453,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "mechanics",
+        "type": ["mechanics"],
         "bonus": "4"
       },
       "defense": {
@@ -1533,13 +1533,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "nature",
+        "type": ["nature"],
         "bonus": "4"
       },
       "defense": {
         "name": "Hard to Hurt",
         "text": "Gain a +1 bonus to AC",
-        "type": "AC",
+        "type": ["AC"],
         "bonus": "1"
       },
       "levelOne": {
@@ -1621,7 +1621,7 @@
       "defense": {
         "name": "Encrypted Mind",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1695,13 +1695,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "science",
+        "type": ["science"],
         "bonus": "4"
       },
       "defense": {
         "name": "Inhuman Nature",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1775,13 +1775,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "nature",
+        "type": ["nature"],
         "bonus": "4"
       },
       "defense": {
         "name": "Many-Limbed Maneuverability",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -1855,7 +1855,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "stealth",
+        "type": ["stealth"],
         "bonus": "4"
       },
       "defense": {
@@ -1935,13 +1935,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "perception",
+        "type": ["perception"],
         "bonus": "4"
       },
       "defense": {
         "name": "Ghostly",
         "text": "While you're bloodied, you gain resist 5 to all damage.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -2015,7 +2015,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "science",
+        "type": ["science"],
         "bonus": "4"
       },
       "defense": {
@@ -2095,7 +2095,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
@@ -2175,13 +2175,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Mushroom Thoughts",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -2255,13 +2255,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "stealth",
+        "type": ["stealth"],
         "bonus": "4"
       },
       "defense": {
         "name": "Mushroom Thoughts",
         "text": "Gain a +2 to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -2335,13 +2335,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "mechanics",
+        "type": ["mechanics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Metallic Shields",
         "text": "Gain a +1 bonus to AC.",
-        "type": "AC",
+        "type": ["AC"],
         "bonus": "1"
       },
       "levelOne": {
@@ -2415,7 +2415,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
@@ -2495,13 +2495,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Master of Terror",
         "text": "Gain a +2 bonus to Will.",
-        "type": "will",
+        "type": ["will"],
         "bonus": "2"
       },
       "levelOne": {
@@ -2575,13 +2575,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Strengthened by Plague",
         "text": "Gain a +2 bonus to Fortitude.",
-        "type": "fort",
+        "type": ["fort"],
         "bonus": "2"
       },
       "levelOne": {
@@ -2655,7 +2655,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "acrobatics",
+        "type": ["acrobatics"],
         "bonus": "4"
       },
       "defense": {
@@ -2735,7 +2735,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
@@ -2815,13 +2815,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Undead Recuperation",
         "text": "You are immune to disease, and whenever you start your turn and have at least 1 hit point, you regain hit points equal to your LEVEL.",
-        "type": "",
+        "type": [],
         "bonus": ""
       },
       "levelOne": {
@@ -2895,13 +2895,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "interaction",
+        "type": ["interaction"],
         "bonus": "4"
       },
       "defense": {
         "name": "Rippling Flesh",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
@@ -2975,7 +2975,7 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
@@ -3055,13 +3055,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "conspiracy",
+        "type": ["conspiracy"],
         "bonus": "4"
       },
       "defense": {
         "name": "Too Slow!",
         "text": "Gain a +2 bonus to AC.",
-        "type": "AC",
+        "type": ["AC"],
         "bonus": "2"
       },
       "levelOne": {
@@ -3135,13 +3135,13 @@
         "bonus": "2"
       },
       "skill": {
-        "type": "athletics",
+        "type": ["athletics"],
         "bonus": "4"
       },
       "defense": {
         "name": "Great Turning Radius",
         "text": "Gain a +2 bonus to Reflex.",
-        "type": "refl",
+        "type": ["refl"],
         "bonus": "2"
       },
       "levelOne": {
