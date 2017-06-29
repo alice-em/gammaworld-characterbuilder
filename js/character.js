@@ -3,28 +3,23 @@ function _id(ID) {
   return document.getElementById(ID);
 }
 function greaterOf(one, two) {
-  if (one >= two) {
-    return one;
-  } else {
-    return two;
-  }
+  return one >= two
+    ? one
+    : two;
 }
 function stringify(ARRAY) {
   return ARRAY.join(', ');
 }
 function isThere(item) {
-  if (item.name.length > 0) {
-    return `<u>${item.name}</u>: ${item.text}<br />`;
-  } else {
-    return '';
-  }
+  return item.name.length > 0
+    ? `<u>${item.name}</u>: ${item.text}<br />`
+    : '';
 }
 function isThereDefense(origin) {
-  if (origin.defense.name.length > 0 && origin.defense.text.length > 0) {
-    return `<u>${origin.defense.name}</u>: ${origin.defense.text}<br />`;
-  } else {
-    return '';
-  }
+  return origin.defense.name.length > 0 && origin.defense.text.length > 0
+    ? `<u>${origin.defense.name}</u>: ${origin.defense.text}<br />`
+    : '';
+
 }
 function isThereExtra(levelOne) {
   let text = isThere(levelOne.one);
@@ -173,19 +168,19 @@ generate.power = (power) => {
   <em>${power.flavor}</em>
   <div class="powers-min">${stringify(power.type)}<br />
   ${power.action} <span style="float:right">${power.range}</span><br />`;
-  if (power.special) {
-    text += `${power.special} <br />`;
-  }
-  if (power.target) {
-    text += `${power.target} <br />`;
-  }
-  if (power.trigger) {
-    text += `${power.trigger} <br />`;
-  }
+  text += power.special
+    ? `${power.special} <br />`
+    : '';
+  text += power.target
+    ? `${power.target} <br />`
+    : '';
+  text += power.trigger
+    ? `${power.trigger} <br />`
+    : '';
   text += '</div>';
-  if (power.attack && power.attack.text.length > 0) {
-    text += `<div class="attack">${power.attack.text}</div>`;
-  }
+  text += power.attack && power.attack.text.length > 0
+    ? text += `<div class="attack">${power.attack.text}</div>`
+    : '';
   text += `<div class="effect">${power.effect.text}</div>`;
   return text;
 };
@@ -245,10 +240,8 @@ levelUp = (alpha, beta, level) => {
 // ---- Random Character Generation!
 // ---------------------------------
 generate.defense = (defense) => {
-  if (defense.type.length > 0) {
-    for (let i = 0; i < defense.type.length; i++) {
-      character.bonus[defense.type[i]] += Number(defense.bonus);
-    }
+  for (let i = 0; i < defense.type.length; i++) {
+    character.bonus[defense.type[i]] += Number(defense.bonus);
   }
 };
 
