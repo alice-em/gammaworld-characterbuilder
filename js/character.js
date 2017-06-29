@@ -10,7 +10,7 @@ function greaterOf(one, two) {
 function stringify(arr) {
   let s = Array.isArray(arr)
     ? arr.join(', ')
-    : '';
+    : arr;
   return s;
 }
 function isThere(item) {
@@ -182,7 +182,7 @@ generate.power = (power) => {
     : '';
   text += '</div>';
   text += power.attack && power.attack.text.length > 0
-    ? text += `<div class="attack">${power.attack.text}</div>`
+    ? `<div class="attack">${power.attack.text}</div>`
     : '';
   text += `<div class="effect">${power.effect.text}</div>`;
   return text;
