@@ -46,7 +46,21 @@
           <li><span class="mono">{{ character.skills[skills[i]] }}</span> {{ app.character.skill[skill] }}</li>`;
         </ul>
       </div>
-      <div id="traits" class="levelOne"></div>
+      <div id="traits" class="levelOne">
+        <strong>Appearance</strong> <br />
+        {{ app.character.alpha.appearance }} <br />
+        {{ app.character.beta.appearance }} <br />
+        <strong>Primary Ability:</strong> {{ app.character.alpha.type.stat.toUpperCase() }} | <strong>Secondary Ability:</strong> {{ app.character.beta.type.stat.toUpperCase() }}<br />
+        Add +{{ app.character.alpha.type.bonus }} to {{ stringify(alpha.type.power) }} overcharge &amp; add +{{ app.character.beta.type.bonus }} to {{ stringify(beta.type.power) }} overcharge<br />
+        <strong>Skills:</strong><br />
+        Add +{{ app.character.alpha.skill.bonus }} to <u>{{ stringify(alpha.skill.type) }}</u> &amp; add + {{ app.character.beta.skill.bonus }} to <u>{{ stringify(beta.skill.type) }}</u><br />
+        <strong>Defense Bonuses:</strong><br />
+        {{ isThereDefense(alpha) }}
+        {{ isThereDefense(beta) }}
+        <strong>Special:</strong><br />
+        {{ isThereExtra(alpha.levelOne) }}
+        {{ isThereExtra(beta.levelOne) }}
+      </div>
       <div id="critical" class="levelOne">
         <div id="mainCritical" class="levelTwo"></div>
         <div id="secondaryCritical" class="levelSix"></div>

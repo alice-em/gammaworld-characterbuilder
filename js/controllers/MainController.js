@@ -10,7 +10,7 @@ app.controller('MainController', [
         wis: '10',
         cha: '10',
         modifier: function(ability) {
-          return Math.floor(($scope.character.ability[ability] - 10) * 0.5);
+          return Math.floor((app.character.ability[ability] - 10) * 0.5);
         }
       },
       alpha: {},
@@ -42,13 +42,8 @@ app.controller('MainController', [
       }
     },
     $scope.i = {
-      defense: {
-        AC: function() {
-          return 10 + $scope.character.level + greaterOf()
-        }
-      }
       mutation: function() {
-        return greaterOf($scope.i.mutation, 1);
+        return greaterOf(app.i.mutation, 1);
       }
     }
   }
@@ -159,8 +154,28 @@ generate.character = (alpha, beta) => { // app.character.alpha
   generate.defense(beta.defense);
   skill.assignment(alpha, beta);
   let level = Number(_id('level').value);
+  app.character.defense.AC = Number(10 + level) + character.bonus.AC;
+  app.character.defense.fort = generate.defenses('fort');
+  app.character.defense.refl = generate.defenses('refl');
+  app.character.defense.will = generate.defenses('will');
   levelUp(alpha, beta, level);
 };
+
+generate.defenses = (defense) => { // 'fort'
+  let modifier;
+  switch (defense) {
+    case 'fort':
+      modifier = greaterOf(app.character.mod('str'), app.character.mod('con'));
+      break;
+    case 'refl':
+      modifier = greaterOf(app.character.mod('dex'), app.character.mod('int'));
+      break;
+    case 'will':
+      modifier = greaterOf(app.character.mod('wis'), app.character.mod('cha'));
+      break;
+  }
+  return 10 + app.character.level + modifier + app.character.bonus[defense];
+}
 
 generate.origin.selected = () => {};
 
@@ -195,30 +210,32 @@ skill.assignment = (alpha, beta) => {
   for (i in skills) {
     switch (skills[i]) {
       case 'athletics':
-        character.skills[skills[i]] = Number(character.mod('str')) + Number(character.level);
+        app.character.skills[skills[i]] = Number(app.character.mod('str')) + Number(app.character.level);
         break;
       case 'acrobatics':
       case 'stealth':
-        character.skills[skills[i]] = Number(character.mod('dex')) + Number(character.level);
+        app.character.skills[skills[i]] = Number(app.character.mod('dex')) + Number(app.character.level);
         break;
       case 'conspiracy':
       case 'mechanics':
       case 'science':
-        character.skills[skills[i]] = Number(character.mod('int')) + Number(character.level);
+        app.character.skills[skills[i]] = Number(app.character.mod('int')) + Number(app.character.level);
         break;
       case 'insight':
       case 'nature':
       case 'perception':
-        character.skills[skills[i]] = Number(character.mod('wis')) + Number(character.level);
+        app.character.skills[skills[i]] = Number(app.character.mod('wis')) + Number(app.character.level);
         break;
       case 'interaction':
-        character.skills[skills[i]] = Number(character.mod('cha')) + Number(character.level);
+        app.character.skills[skills[i]] = Number(app.character.mod('cha')) + Number(app.character.level);
         break;
     }
   }
   skill.origin(alpha.skill);
   skill.origin(beta.skill);
-  skill.random();
+  random ? skill.random() : (
+
+  )
 };
 
 skill.origin = (originSkill) => { // alpha.skill
@@ -230,7 +247,7 @@ skill.origin = (originSkill) => { // alpha.skill
 skill.random = () => {
   let _random = Math.floor(Math.random() * 10);
   let _skill = skills[_random];
-  character.skills[_skill] += 4;
+  app.character.skills[_skill] += 4;
 };
 
 threeDSix = () => {
