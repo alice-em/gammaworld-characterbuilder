@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Gamma World 7th Edition: Character Builder</title>
@@ -30,8 +31,10 @@
       <div id="bloodied" class="levelOne"></div>
       <div id="mutations" class="levelOne"><strong>Alpha Mutations:</strong> {{ i.mutation }}</div>
       <div id="ability-table" class="levelOne">
-        <strong>Stats</strong><br />
-        <div class="stat-cell"> <!-- Render 6 times -->
+        <strong>Stats</strong>
+        <br />
+        <div class="stat-cell">
+          <!-- Render 6 times -->
           <div class="ability-mod">{{ character.mod(stats[i]) }}</div>
           <div class="ability-name">{{ stats[i].toUpperCase() }}</div>
           <div class="ability-score">{{ character.ability[stats[i]] }}</div>
@@ -42,51 +45,69 @@
     <article>
       <div id="skill-table" class="levelOne">
         <strong>Skills</strong>
-        <ul> <!-- Render 10 times -->
-          <li><span class="mono">{{ character.skills[skills[i]] }}</span> {{ app.character.skill[skill] }}</li>`;
+        <ul>
+          <!-- Render 10 times -->
+          {{ app.character.skills.list }};
         </ul>
       </div>
       <div id="traits" class="levelOne">
-        <strong>Appearance</strong> <br />
-        {{ app.character.alpha.appearance }} <br />
-        {{ app.character.beta.appearance }} <br />
-        <strong>Primary Ability:</strong> {{ app.character.alpha.type.stat.toUpperCase() }} | <strong>Secondary Ability:</strong> {{ app.character.beta.type.stat.toUpperCase() }}<br />
-        Add +{{ app.character.alpha.type.bonus }} to {{ stringify(alpha.type.power) }} overcharge &amp; add +{{ app.character.beta.type.bonus }} to {{ stringify(beta.type.power) }} overcharge<br />
-        <strong>Skills:</strong><br />
-        Add +{{ app.character.alpha.skill.bonus }} to <u>{{ stringify(alpha.skill.type) }}</u> &amp; add + {{ app.character.beta.skill.bonus }} to <u>{{ stringify(beta.skill.type) }}</u><br />
-        <strong>Defense Bonuses:</strong><br />
-        {{ isThereDefense(alpha) }}
-        {{ isThereDefense(beta) }}
-        <strong>Special:</strong><br />
-        {{ isThereExtra(alpha.levelOne) }}
-        {{ isThereExtra(beta.levelOne) }}
+        <strong>Appearance</strong>
+        <br /> {{ app.character.alpha.appearance }}
+        <br /> {{ app.character.beta.appearance }}
+        <br />
+        <strong>Primary Ability:</strong> <span class="uppercase">{{ app.character.alpha.type.stat }}</span> | <strong>Secondary Ability:</strong> <span class="uppercase">{{ app.character.beta.type.stat }}</span>
+        <br /> Add +{{ app.character.alpha.type.bonus }} to {{ app.character.alpha.type.power }} overcharge &amp; add +{{ app.character.beta.type.bonus }} to {{ app.character.beta.type.power }} overcharge
+        <br />
+        <strong>Skills:</strong>
+        <br /> Add +{{ app.character.alpha.skill.bonus }} to <u>{{ app.character.alpha.skill.type) }}</u> &amp; add + {{ app.character.beta.skill.bonus }} to <u>{{ app.character.beta.skill.type) }}</u>
+        <br />
+        <strong>Defense Bonuses:</strong>
+        <br />
+        <u>{{ app.character.alpha.defense.name }}</u>: {{ app.character.alpha.defense.text }}
+        <br />
+        <u>{{ app.character.beta.defense.name }}</u>: {{ app.character.beta.defense.text }}
+        <br />
+        <strong>Special:</strong>
+        <br /> {{ app.character.alpha.levelOne }}
+        <br /> {{ app.character.alpha.levelTwo }}
+        <br /> {{ app.character.alpha.levelOne }}
+        <br /> {{ app.character.alpha.levelTwo }}
+        <br />
       </div>
       <div id="critical" class="levelOne">
-        <div id="mainCritical" class="levelTwo"></div>
-        <div id="secondaryCritical" class="levelSix"></div>
+        <div id="mainCritical" class="levelTwo">{{ app.character.alpha.critical }}</div>
+        <div id="secondaryCritical" class="levelSix">{{ app.character.beta.critical }}</div>
       </div>
     </article>
     <div id="attacks" class="levelOne"></div>
     <div id="powers-table" class="levelOne">
       <div class="novice">
-        <div id="mainNovice"></div>
-        <div id="secondaryNovice"></div>
+        <div id="mainNovice" class="levelOne">{{ app.character.alpha.power.novice.text }}</div>
+        <div id="secondaryNovice" class="levelOne">{{ app.character.beta.power.novice.text }}</div>
       </div>
       <div class="utility levelThree">
-        <div id="mainUtility"></div>
-        <div id="secondaryUtility"></div>
+        <div id="mainUtility" class="levelThree">{{ app.character.alpha.power.utility.text }}</div>
+        <div id="secondaryUtility" class="levelSeven">{{ app.character.beta.power.utility.text }}</div>
       </div>
       <div class="expert levelFive">
-        <div id="mainExpert"></div>
-        <div id="secondaryExpert"></div>
+        <div id="mainExpert" class="levelFive">{{ app.character.alpha.power.expert.text }}</div>
+        <div id="secondaryExpert" class="levelNine">{{ app.character.beta.power.expert.text }}</div>
       </div>
     </div>
-    <div id="uber" class="levelTen"></div>
+    <div id="uber" class="levelTen">
+      <ul>
+        <li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li>
+        <li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li>
+        <li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li>
+      </ul>
+    </div>
     <div id="gear" class="levelOne">
-      <strong>Gear:</strong><br />
+      <strong>Gear:</strong>
+      <br />
       <textarea rows="4" cols="50"></textarea>
     </div>
   </div>
   <script src="js/character.js"></script>
 </body>
+
 </html>

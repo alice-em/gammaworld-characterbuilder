@@ -14,6 +14,11 @@ app.controller('MainController', [
         }
       },
       alpha: {},
+      armor: {
+        none: 0,
+        light: 2,
+        heavy: 4
+      },
       beta: {},
       bonus: {
         AC: 0,
@@ -38,7 +43,18 @@ app.controller('MainController', [
         nature: '',
         perception: '',
         science: '',
-        stealth: ''
+        stealth: '',
+        list: function() {
+          let text = '';
+          for (i in skills) {
+            text += `<li><span class="mono"> ${skills[i]}</span> ${app.character.skill[skill]}</li>`
+          }
+          return text;
+        }
+      },
+      special: weapon: {
+        light: 2,
+        heavy: 3
       }
     },
     $scope.i = {
@@ -133,13 +149,13 @@ const famineInFargo = [
   'wheeled'
 ];
 
-generate.defense = (defense) => { // app.character.alpha.defense
-  for (type in defense.type) {
-    app.character.bonus[type] += Number(defense.bonus);
+generate.abilities.random = () => {
+  for (i in stats) {
+    app.character.ability[stats[i]] = threeDSix();
   }
-};
+}
 
-generate.character = (alpha, beta) => { // app.character.alpha
+generate.character = (alpha, beta) => { // example: app.character.alpha
   if (alpha.name === beta.name) {
     beta = origins.special.human;
   }
@@ -150,18 +166,22 @@ generate.character = (alpha, beta) => { // app.character.alpha
     app.character.ability[alpha.type.stat] = 18;
     app.character.ability[beta.type.stat] = 16;
   }
-  generate.defense(alpha.defense);
-  generate.defense(beta.defense);
+  generate.character.defense(alpha.defense);
+  generate.character.defense(beta.defense);
   skill.assignment(alpha, beta);
   let level = Number(_id('level').value);
-  app.character.defense.AC = Number(10 + level) + character.bonus.AC;
+  app.character.defense.AC = Number(10 + level) + app + character.bonus.AC;
   app.character.defense.fort = generate.defenses('fort');
   app.character.defense.refl = generate.defenses('refl');
   app.character.defense.will = generate.defenses('will');
   levelUp(alpha, beta, level);
 };
-
-generate.defenses = (defense) => { // 'fort'
+generate.character.defense = (defense) => { // example: app.character.alpha.defense
+  for (type in defense.type) {
+    app.character.bonus[type] += Number(defense.bonus);
+  }
+};
+generate.defenses = (defense) => { // example: 'fort'
   let modifier;
   switch (defense) {
     case 'fort':
@@ -177,9 +197,7 @@ generate.defenses = (defense) => { // 'fort'
   return 10 + app.character.level + modifier + app.character.bonus[defense];
 }
 
-generate.origin.selected = () => {};
-
-generate.origin.random = (origins) => {
+generate.origin.random = (origins) => { // example: jsonData
   let randomizer = (origins) => {
     let book,
       number,
@@ -200,13 +218,31 @@ generate.origin.random = (origins) => {
   app.character.beta = randomizer(origins);
 };
 
-generate.abilities.random = () => {
-  for (i in stats) {
-    app.character.ability[stats[i]] = threeDSix();
-  }
-}
+generate.origin.selected = () => {};
 
-skill.assignment = (alpha, beta) => {
+generate.power.text = (power) => { // example: app.character.alpha.power.novice
+  let text = `<strong>${power.name}</strong>
+  <em>${power.flavor}</em>
+  <div class="powers-min">${stringify(power.type)}<br />
+  ${power.action} <span style="float:right">${power.range}</span><br />`;
+  if (power.special) {
+    text += `${power.special} <br />`;
+  }
+  if (power.target) {
+    text += `${power.target} <br />`;
+  }
+  if (power.trigger) {
+    text += `${power.trigger} <br />`;
+  }
+  text += '</div>';
+  if (power.attack && power.attack.text.length > 0) {
+    text += `<div class="attack">${power.attack.text}</div>`;
+  }
+  text += `<div class="effect">${power.effect.text}</div>`;
+  power.text = text;
+};
+
+skill.assignment = (alpha, beta) => { // example: app.character.alpha
   for (i in skills) {
     switch (skills[i]) {
       case 'athletics':
@@ -233,14 +269,14 @@ skill.assignment = (alpha, beta) => {
   }
   skill.origin(alpha.skill);
   skill.origin(beta.skill);
-  random ? skill.random() : (
-
-  )
+  random
+    ? skill.random()
+    : ();
 };
 
-skill.origin = (originSkill) => { // alpha.skill
-  for (i in originSkill) {
-    app.character.skills[originSkill.type[i]] += Number(originSkill.bonus);
+skill.origin = (skill) => { // example: alpha.skill
+  for (i in skill) {
+    app.character.skills[skill.type[i]] += Number(skill.bonus);
   }
 };
 
@@ -258,4 +294,18 @@ function greaterOf(one, two) {
   return one >= two
     ? one
     : two;
+}
+
+function isThere(item) {
+  return item.name.length > 0
+    ? `<u>${item.name}</u>: ${item.text}<br />`
+    : '';
+}
+
+function isThereExtra(levelOne) {
+  let text = isThere(levelOne.one);
+  text += levelOne.two
+    ? isThere(levelOne.two)
+    : '';
+  return text;
 }
