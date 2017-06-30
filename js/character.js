@@ -8,10 +8,9 @@ function greaterOf(one, two) {
     : two;
 }
 function stringify(arr) {
-  let s = Array.isArray(arr)
+  return Array.isArray(arr)
     ? arr.join(', ')
     : arr;
-  return s;
 }
 function isThere(item) {
   return item.name.length > 0
@@ -22,7 +21,6 @@ function isThereDefense(origin) {
   return origin.defense.name.length > 0 && origin.defense.text.length > 0
     ? `<u>${origin.defense.name}</u>: ${origin.defense.text}<br />`
     : '';
-
 }
 function isThereExtra(levelOne) {
   let text = isThere(levelOne.one);
@@ -105,6 +103,8 @@ character = {
     'wis': '10',
     'cha': '10'
   },
+  alpha: {},
+  beta: {},
   bonus: {
     'AC': 0,
     'fort': 0,
@@ -190,6 +190,7 @@ generate.power = (power) => {
 
 levelUp = (alpha, beta, level) => {
   let mutation = 1;
+  level = Number(level);
   character.level = level;
   switch (level) {
     case 10:
@@ -209,7 +210,7 @@ levelUp = (alpha, beta, level) => {
     case 3:
       _id('mainUtility').innerHTML = generate.power(alpha.powers.utility);
     case 2:
-      _id('mainCritical').innerHTML = alpha.critical;
+      _id('mainCritical').innerHTML = `<strong>Critical Powers:</strong><br />${alpha.critical}`;
     default:
       mutation = greaterOf(mutation, 1);
       _id('mutations').innerHTML = `<strong>Alpha Mutations:</strong> ${mutation}`;
@@ -217,10 +218,10 @@ levelUp = (alpha, beta, level) => {
       _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
       _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${Number(10 + level) + character.bonus.AC} + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${ 10 + level + greaterOf(character.mod('str'), character.mod('con')) + character.bonus.fort}<br />
-        <strong>Reflex:</strong> ${ 10 + level + greaterOf(character.mod('dex'), character.mod('int')) + character.bonus.refl}<br />
-        <strong>Will:</strong>  ${ 10 + level + greaterOf(character.mod('wis'), character.mod('cha')) + character.bonus.will}`;
+        <strong>AC:</strong> ${ 10 + Number(level) + Number(character.bonus.AC)} + ____ (Armor, if applicable)<br />
+        <strong>Fort:</strong> ${ 10 + Number(level) + Number(greaterOf(character.mod('str'), character.mod('con'))) + Number(character.bonus.fort)}<br />
+        <strong>Reflex:</strong> ${ 10 + Number(level) + Number(greaterOf(character.mod('dex'), character.mod('int'))) + Number(character.bonus.refl)}<br />
+        <strong>Will:</strong>  ${ 10 + Number(level) + Number(greaterOf(character.mod('wis'), character.mod('cha'))) + Number(character.bonus.will)}`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
@@ -240,6 +241,11 @@ levelUp = (alpha, beta, level) => {
   }
 };
 
+document.getElementById('level').addEventListener('input', function() {
+  reset();
+  levelUp(character.alpha, character.beta, document.getElementById('level').value)
+});
+
 // ---- Random Character Generation!
 // ---------------------------------
 generate.defense = (defense) => {
@@ -254,6 +260,8 @@ generate.random = (origins) => {
   if (alpha.name === beta.name) {
     beta = origins.special.human;
   }
+  character.alpha = alpha;
+  character.beta = beta;
   for (let i = 0; i < 6; i++) {
     character.ability[stats[i]] = threeDSix();
   }
