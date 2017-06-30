@@ -322,7 +322,7 @@
     },
     "empath": {
       "name": "Empath",
-      "appearance": "You unconsciously mimic the emotional state 01 creatures around you. If your friends panic, you echo their terror. When you're with a weepy drunk, you inevitably end up crying into your beer, too.",
+      "appearance": "You unconsciously mimic the emotional state of creatures around you. If your friends panic, you echo their terror. When you're with a weepy drunk, you inevitably end up crying into your beer, too.",
       "type": {
         "stat": "cha",
         "power": "Psi",
@@ -344,7 +344,7 @@
           "text": "Allies adjacent to you gain a +5 bonus to death saving throws."
         }
       },
-      "critical": "When you score a critical hit, one ally within 5 squares of the target regains hit points equa'i to twice your LEVEL.",
+      "critical": "When you score a critical hit, one ally within 5 squares of the target regains hit points equal to twice your LEVEL.",
       "powers": {
         "novice": {
           "name": "Vitality Transfer",

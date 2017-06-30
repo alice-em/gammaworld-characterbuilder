@@ -2,6 +2,13 @@
 function _id(ID) {
   return document.getElementById(ID);
 }
+function _add(array) {
+  let num = 0;
+  for (i in array) {
+    num += Number(array[i]);
+  }
+  return num;
+}
 function greaterOf(one, two) {
   return one >= two
     ? one
@@ -167,9 +174,9 @@ getJSON = (url, callback) => {
 
 // Powers and Level rendering
 generate.power = (power) => {
-  let text = `<strong>${power.name}</strong>
+  let text = `<strong>${power.name} <span style="float: right;">${power.freq}</span></strong>
   <em>${power.flavor}</em>
-  <div class="powers-min">${stringify(power.type)}<br />
+  <div class="powers-min">${power.type.join(', ')}<br />
   ${power.action} <span style="float:right">${power.range}</span><br />`;
   text += power.special
     ? `${power.special} <br />`
@@ -218,18 +225,18 @@ levelUp = (alpha, beta, level) => {
       _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
       _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${ 10 + Number(level) + Number(character.bonus.AC)} + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${ 10 + Number(level) + Number(greaterOf(character.mod('str'), character.mod('con'))) + Number(character.bonus.fort)}<br />
-        <strong>Reflex:</strong> ${ 10 + Number(level) + Number(greaterOf(character.mod('dex'), character.mod('int'))) + Number(character.bonus.refl)}<br />
-        <strong>Will:</strong>  ${ 10 + Number(level) + Number(greaterOf(character.mod('wis'), character.mod('cha'))) + Number(character.bonus.will)}`;
+        <strong>AC:</strong> ${ _add([10, level, character.bonus.AC]) } + ____ (Armor, if applicable)<br />
+        <strong>Fort:</strong> ${ _add([10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort]) }<br />
+        <strong>Reflex:</strong> ${ _add([10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl]) }<br />
+        <strong>Will:</strong>  ${ _add([10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will]) }`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
         ${beta.appearance}<br />
         <strong>Primary Ability:</strong> ${alpha.type.stat.toUpperCase()} | <strong>Secondary Ability:</strong> ${beta.type.stat.toUpperCase()}<br />
-        Add +${alpha.type.bonus} to ${stringify(alpha.type.power)} overcharge &amp; add +${beta.type.bonus} to ${stringify(beta.type.power)} overcharge<br />
+        Add +${alpha.type.bonus} to <u>${stringify(alpha.type.power)}</u> overcharge &amp; add +${beta.type.bonus} to <u>${stringify(beta.type.power)}</u> overcharge<br />
         <strong>Skills:</strong><br />
-        Add +${alpha.skill.bonus} to <u>${stringify(alpha.skill.type)}</u> &amp; add + ${beta.skill.bonus} to <u>${stringify(beta.skill.type)}</u><br />
+        Add +${alpha.skill.bonus} to <u>${stringify(alpha.skill.type)}</u> &amp; add +${beta.skill.bonus} to <u>${stringify(beta.skill.type)}</u><br />
         <strong>Defense Bonuses:</strong><br />
         ${isThereDefense(alpha)}
         ${isThereDefense(beta)}
@@ -281,6 +288,7 @@ generate.random = (origins) => {
   skill.assignment(alpha, beta);
   let level = Number(_id('level').value);
   levelUp(alpha, beta, level);
+  console.dir(character);
 };
 
 origin.random = (data) => {
