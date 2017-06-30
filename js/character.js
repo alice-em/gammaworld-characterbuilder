@@ -2,10 +2,10 @@
 function _id(ID) {
   return document.getElementById(ID);
 }
-function _add(array) {
+function _add() {
   let num = 0;
-  for (i in array) {
-    num += Number(array[i]);
+  for (let i in arguments) {
+    num += Number(arguments[i]);
   }
   return num;
 }
@@ -31,10 +31,9 @@ function isThereDefense(origin) {
 }
 function isThereExtra(levelOne) {
   let text = isThere(levelOne.one);
-  text += levelOne.two
+  return text += levelOne.two
     ? isThere(levelOne.two)
     : '';
-  return text;
 }
 
 // URL
@@ -88,7 +87,6 @@ const famineInFargo = [
 
 // Object Declarations
 let character,
-  origins,
   skills,
   stats;
 // Function Declarations
@@ -225,10 +223,10 @@ levelUp = (alpha, beta, level) => {
       _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
       _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${ _add([10, level, character.bonus.AC]) } + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${ _add([10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort]) }<br />
-        <strong>Reflex:</strong> ${ _add([10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl]) }<br />
-        <strong>Will:</strong>  ${ _add([10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will]) }`;
+        <strong>AC:</strong> ${ _add(10, level, character.bonus.AC) } + ____ (Armor, if applicable)<br />
+        <strong>Fort:</strong> ${ _add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort) }<br />
+        <strong>Reflex:</strong> ${ _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl) }<br />
+        <strong>Will:</strong>  ${ _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will) }`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
@@ -250,7 +248,7 @@ levelUp = (alpha, beta, level) => {
 
 document.getElementById('level').addEventListener('input', function() {
   reset();
-  levelUp(character.alpha, character.beta, document.getElementById('level').value)
+  levelUp(character.alpha, character.beta, document.getElementById('level').value);
 });
 
 // ---- Random Character Generation!
