@@ -1,4 +1,11 @@
 // Shorthand
+function _add() {
+  let num = 0;
+  for (let i in arguments) {
+    num += Number(arguments[i]);
+  }
+  return num;
+}
 function _id(ID) {
   return document.getElementById(ID);
 }
@@ -109,6 +116,12 @@ character = {
     'refl': 0,
     'will': 0
   },
+  defense: {
+    'AC': 0,
+    'fort': 0,
+    'refl': 0,
+    'will': 0
+  },
   level: '1',
   mod: function(stat) {
     return Math.floor((this.ability[stat] - 10) * 0.5);
@@ -190,6 +203,12 @@ levelUp = (alpha, beta, level) => {
   let mutation = 1;
   character.level = level;
   skill.assignment(alpha, beta);
+  character.defense = {
+    AC: _add(10, level, character.bonus.AC),
+    fort: _add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort),
+    will: _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will),
+    refl: _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl)
+  }
   switch (level) {
     case 10:
       _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
@@ -216,10 +235,10 @@ levelUp = (alpha, beta, level) => {
       _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
       _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${Number(10 + level) + character.bonus.AC} + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${ 10 + level + greaterOf(character.mod('str'), character.mod('con')) + character.bonus.fort}<br />
-        <strong>Reflex:</strong> ${ 10 + level + greaterOf(character.mod('dex'), character.mod('int')) + character.bonus.refl}<br />
-        <strong>Will:</strong>  ${ 10 + level + greaterOf(character.mod('wis'), character.mod('cha')) + character.bonus.will}`;
+        <strong>AC:</strong> ${character.defense.AC} + ____ (Armor, if applicable)<br />
+        <strong>Fort:</strong> ${character.defense.fort}<br />
+        <strong>Reflex:</strong> ${character.defense.refl}<br />
+        <strong>Will:</strong>  ${character.defense.will}`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
