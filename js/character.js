@@ -197,6 +197,7 @@ levelUp = (alpha, beta, level) => {
   let mutation = 1;
   level = Number(level);
   character.level = level;
+
   switch (level) {
     case 10:
       _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
@@ -220,13 +221,13 @@ levelUp = (alpha, beta, level) => {
       mutation = greaterOf(mutation, 1);
       _id('mutations').innerHTML = `<strong>Alpha Mutations:</strong> ${mutation}`;
       _id('origins').innerHTML = `α: ${alpha.name} | β: ${beta.name}`;
-      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
-      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
+      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.ability.con + (5 * _add(level, -1))}`;
+      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.ability.con + (5 * _add(level, -1)) * 0.5))}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${ _add(10, level, character.bonus.AC) } + ____ (Armor, if applicable)<br />
-        <strong>Fort:</strong> ${ _add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort) }<br />
-        <strong>Reflex:</strong> ${ _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl) }<br />
-        <strong>Will:</strong>  ${ _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will) }`;
+        <strong>AC:</strong> ${_add(10, level, character.bonus.AC)} + ____ (Armor, if applicable)<br />
+        <strong>Fort:</strong> ${_add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort)}<br />
+        <strong>Reflex:</strong> ${_add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl)}<br />
+        <strong>Will:</strong>  ${_add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will)}`;
       _id('traits').innerHTML = `
         <strong>Appearance:</strong><br />
         ${alpha.appearance}<br />
