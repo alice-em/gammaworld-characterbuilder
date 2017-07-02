@@ -401,6 +401,4 @@ getJSON(originsURL, function(data) {
   _id('load-animation').style.display = 'display';
   origins = data;
   generate.random(data);
-  console.log('Character:');
-  console.dir(character);
 });
