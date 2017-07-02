@@ -3,22 +3,30 @@ function _id(ID) {
   return document.getElementById(ID);
 }
 function greaterOf(one, two) {
-  return one >= two ? one : two;
+  return one >= two
+    ? one
+    : two;
 }
 function stringify(item) {
-  return Array.isArray(item) ? item.join(', ') : item;
+  return Array.isArray(item)
+    ? item.join(', ')
+    : item;
 }
 function isThere(item) {
-  return item.name.length > 0 ? `<u>${item.name}</u>: ${item.text}<br />` : '';
+  return item.name.length > 0
+    ? `<u>${item.name}</u>: ${item.text}<br />`
+    : '';
 }
 function isThereDefense(origin) {
-  return origin.defense.name.length > 0 && origin.defense.text.length > 0 ? `<u>${origin.defense.name}</u>: ${origin.defense.text}<br />` : '';
+  return origin.defense.name.length > 0 && origin.defense.text.length > 0
+    ? `<u>${origin.defense.name}</u>: ${origin.defense.text}<br />`
+    : '';
 }
 function isThereExtra(levelOne) {
   let text = isThere(levelOne.one);
-  if (levelOne.two) {
-    text += isThere(levelOne.two);
-  }
+  text += levelOne.two
+    ? isThere(levelOne.two)
+    : '';
   return text;
 }
 
