@@ -122,7 +122,10 @@ character = {
   'fort': 0,
   'refl': 0,
   'will': 0
-},
+  },
+  hitpoints: function() {
+    return _add(12, character.ability.con, (5 * _add(character.level, -1)));
+  },
   level: '1',
   mod: function(stat) {
     return Math.floor((this.ability[stat] - 10) * 0.5);
@@ -210,6 +213,7 @@ levelUp = (alpha, beta, level) => {
     will: _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will),
     refl: _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl)
   }
+  skill.assignment(alpha, beta);
   switch (level) {
     case 10:
       _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
@@ -233,10 +237,11 @@ levelUp = (alpha, beta, level) => {
       mutation = greaterOf(mutation, 1);
       _id('mutations').innerHTML = `<strong>Alpha Mutations:</strong> ${mutation}`;
       _id('origins').innerHTML = `α: ${alpha.name} | β: ${beta.name}`;
-      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.ability.con + (5 * _add(level, -1))}`;
-      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.ability.con + (5 * _add(level, -1)) * 0.5))}`;
+      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${character.hitpoints()}`;
+      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong>
+      ${Math.floor(character.hitpoints() * 0.5)}`;
       _id('defenses').innerHTML = `
-        <strong>AC:</strong> ${character.defense.AC)} + ____ (Armor, if applicable)<br />
+        <strong>AC:</strong> ${character.defense.AC} + ____ (Armor, if applicable)<br />
         <strong>Fort:</strong> ${character.defense.fort}<br />
         <strong>Reflex:</strong> ${character.defense.refl}<br />
         <strong>Will:</strong>  ${character.defense.will}`;
@@ -257,6 +262,7 @@ levelUp = (alpha, beta, level) => {
       _id('mainNovice').innerHTML = generate.power(alpha.powers.novice);
       _id('secondaryNovice').innerHTML = generate.power(beta.powers.novice);
   }
+  console.dir(character);
 };
 
 document.getElementById('level').addEventListener('input', function() {
@@ -291,15 +297,16 @@ generate.random = (origins) => {
   }
   generate.defense(alpha.defense);
   generate.defense(beta.defense);
+  skill.random();
   let text = '<strong>Stats</strong><br />';
   for (let i = 0; i < stats.length; i++) {
     text += `<div class="stat-cell"><div class="ability-mod">${character.mod(stats[i])}</div><div class="ability-name">${stats[i].toUpperCase()}</div><div class="ability-score">${character.ability[stats[i]]}</div></div>`;
   }
   _id('ability-table').innerHTML = text;
+
   skill.assignment(alpha, beta);
   let level = Number(_id('level').value);
   levelUp(alpha, beta, level);
-  console.dir(character);
 };
 
 origin.random = (data) => {
