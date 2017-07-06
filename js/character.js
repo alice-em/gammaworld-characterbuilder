@@ -31,9 +31,10 @@ function isThereDefense(origin) {
 }
 function isThereExtra(levelOne) {
   let text = isThere(levelOne.one);
-  return text += levelOne.two
+  text += levelOne.two
     ? isThere(levelOne.two)
     : '';
+  return text;
 }
 
 // URL
@@ -118,10 +119,10 @@ character = {
     randomSkillName: ''
   },
   defense: {
-  'AC': 0,
-  'fort': 0,
-  'refl': 0,
-  'will': 0
+    'AC': 0,
+    'fort': 0,
+    'refl': 0,
+    'will': 0
   },
   hitpoints: function() {
     return _add(12, character.ability.con, (5 * _add(character.level, -1)));
@@ -212,7 +213,7 @@ levelUp = (alpha, beta, level) => {
     fort: _add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort),
     will: _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will),
     refl: _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl)
-  }
+  };
   skill.assignment(alpha, beta);
   switch (level) {
     case 10:
@@ -399,6 +400,5 @@ threeDSix = () => {
 // Render process:
 getJSON(originsURL, function(data) {
   _id('load-animation').style.display = 'display';
-  origins = data;
   generate.random(data);
 });
