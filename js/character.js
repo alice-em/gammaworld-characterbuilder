@@ -217,7 +217,7 @@ levelUp = (alpha, beta, level) => {
   skill.assignment(alpha, beta);
   switch (level) {
     case 10:
-      _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
+_id('uber').innerHTML = '<h3>Uber Power</h3><ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
     case 9:
       _id('secondaryExpert').innerHTML = generate.power(beta.powers.expert);
     case 8:
@@ -274,7 +274,7 @@ document.getElementById('level').addEventListener('input', function() {
 // ---- Random Character Generation!
 // ---------------------------------
 generate.defense = (defense) => {
-  for (let i = 0; i < defense.type.length; i++) {
+  for (let i in defense.type) {
     character.bonus[defense.type[i]] += Number(defense.bonus);
   }
 };
@@ -287,7 +287,7 @@ generate.random = (origins) => {
   }
   character.alpha = alpha;
   character.beta = beta;
-  for (let i = 0; i < 6; i++) {
+  for (let i in 6) {
     character.ability[stats[i]] = threeDSix();
   }
   if (alpha.type.stat === beta.type.stat) {
@@ -300,7 +300,7 @@ generate.random = (origins) => {
   generate.defense(beta.defense);
   skill.random();
   let text = '<strong>Stats</strong><br />';
-  for (let i = 0; i < stats.length; i++) {
+  for (let i in stats) {
     text += `<div class="stat-cell"><div class="ability-mod">${character.mod(stats[i])}</div><div class="ability-name">${stats[i].toUpperCase()}</div><div class="ability-score">${character.ability[stats[i]]}</div></div>`;
   }
   _id('ability-table').innerHTML = text;
@@ -346,7 +346,7 @@ reset = () => {
 };
 
 skill.assignment = (alpha, beta) => {
-  for (let i = 0; i < skills.length; i++) {
+  for (let i in skills) {
     switch (skills[i]) {
       case 'athletics':
         character.skills[skills[i]] = Number(character.mod('str')) + Number(character.level);
@@ -374,7 +374,7 @@ skill.assignment = (alpha, beta) => {
   skill.origin(beta.skill);
   character.skills[character.bonus.randomSkillName] += 4; // for random skill bonus!
   let text = '<strong>Skills</strong><br /><ul>';
-  for (let i = 0; i < skills.length; i++) {
+  for (let i in skills) {
     text += `<li><span class="mono">${character.skills[skills[i]]}</span> ${skills[i]}</li>`;
   }
   text += '</ul>';
@@ -382,7 +382,7 @@ skill.assignment = (alpha, beta) => {
 };
 
 skill.origin = (originSkill) => {
-  for (let i = 0; i < originSkill.type.length; i++) {
+  for (let i in originSkill.type) {
     character.skills[originSkill.type[i]] += Number(originSkill.bonus);
   }
 };
