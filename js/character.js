@@ -217,7 +217,7 @@ levelUp = (alpha, beta, level) => {
   skill.assignment(alpha, beta);
   switch (level) {
     case 10:
-_id('uber').innerHTML = '<strong>Uber Power</strong><ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
+      _id('uber').innerHTML = '<strong>Uber Power</strong><ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
     case 9:
       _id('secondaryExpert').innerHTML = generate.power(beta.powers.expert);
     case 8:
