@@ -1,4 +1,7 @@
 // Shorthand
+function _id(ID) {
+  return document.getElementById(ID);
+}
 function _add() {
   let num = 0;
   for (let i in arguments) {
@@ -6,18 +9,15 @@ function _add() {
   }
   return num;
 }
-function _id(ID) {
-  return document.getElementById(ID);
-}
 function greaterOf(one, two) {
   return one >= two
     ? one
     : two;
 }
-function stringify(item) {
-  return Array.isArray(item)
-    ? item.join(', ')
-    : item;
+function stringify(arr) {
+  return Array.isArray(arr)
+    ? arr.join(', ')
+    : arr;
 }
 function isThere(item) {
   return item.name.length > 0
@@ -88,7 +88,6 @@ const famineInFargo = [
 
 // Object Declarations
 let character,
-  origins,
   skills,
   stats;
 // Function Declarations
@@ -110,17 +109,23 @@ character = {
     'wis': '10',
     'cha': '10'
   },
+  alpha: {},
+  beta: {},
   bonus: {
     'AC': 0,
     'fort': 0,
     'refl': 0,
-    'will': 0
+    'will': 0,
+    randomSkillName: ''
   },
   defense: {
     'AC': 0,
     'fort': 0,
     'refl': 0,
     'will': 0
+  },
+  hitpoints: function() {
+    return _add(12, character.ability.con, (5 * _add(character.level, -1)));
   },
   level: '1',
   mod: function(stat) {
@@ -178,40 +183,41 @@ getJSON = (url, callback) => {
 
 // Powers and Level rendering
 generate.power = (power) => {
-  let text = `<strong>${power.name}</strong>
+  let text = `<strong>${power.name} <span style="float: right;">${power.freq}</span></strong>
   <em>${power.flavor}</em>
-  <div class="powers-min">${stringify(power.type)}<br />
+  <div class="powers-min">${power.type.join(', ')}<br />
   ${power.action} <span style="float:right">${power.range}</span><br />`;
-  if (power.special) {
-    text += `${power.special} <br />`;
-  }
-  if (power.target) {
-    text += `${power.target} <br />`;
-  }
-  if (power.trigger) {
-    text += `${power.trigger} <br />`;
-  }
+  text += power.special
+    ? `${power.special} <br />`
+    : '';
+  text += power.target
+    ? `${power.target} <br />`
+    : '';
+  text += power.trigger
+    ? `${power.trigger} <br />`
+    : '';
   text += '</div>';
-  if (power.attack && power.attack.text.length > 0) {
-    text += `<div class="attack">${power.attack.text}</div>`;
-  }
+  text += power.attack && power.attack.text.length > 0
+    ? `<div class="attack">${power.attack.text}</div>`
+    : '';
   text += `<div class="effect">${power.effect.text}</div>`;
   return text;
 };
 
 levelUp = (alpha, beta, level) => {
   let mutation = 1;
+  level = Number(level);
   character.level = level;
-  skill.assignment(alpha, beta);
   character.defense = {
     AC: _add(10, level, character.bonus.AC),
     fort: _add(10, level, greaterOf(character.mod('str'), character.mod('con')), character.bonus.fort),
     will: _add(10, level, greaterOf(character.mod('wis'), character.mod('cha')), character.bonus.will),
     refl: _add(10, level, greaterOf(character.mod('dex'), character.mod('int')), character.bonus.refl)
-  }
+  };
+  skill.assignment(alpha, beta);
   switch (level) {
     case 10:
-      _id('uber').innerHTML = '<ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
+      _id('uber').innerHTML = '<strong>Uber Power</strong><ul><li>Choose one of your origin expert powers. You can use that power one additional time each encounter.</li><li>At the end of each encounter, you can automatically succeed on one Omega Charge check.</li><li>At the end of each encounter, you can choose one of your readied Alpha Mutation cards. You don\'t discard that card, and it remains readied for your next encounter.</li></ul>';
     case 9:
       _id('secondaryExpert').innerHTML = generate.power(beta.powers.expert);
     case 8:
@@ -227,13 +233,14 @@ levelUp = (alpha, beta, level) => {
     case 3:
       _id('mainUtility').innerHTML = generate.power(alpha.powers.utility);
     case 2:
-      _id('mainCritical').innerHTML = alpha.critical;
+      _id('mainCritical').innerHTML = `<strong>Critical Powers:</strong><br />${alpha.critical}`;
     default:
       mutation = greaterOf(mutation, 1);
       _id('mutations').innerHTML = `<strong>Alpha Mutations:</strong> ${mutation}`;
       _id('origins').innerHTML = `α: ${alpha.name} | β: ${beta.name}`;
-      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${ 12 + character.mod('con')}`;
-      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong> ${Math.floor((12 + character.mod('con')) * 0.5)}`;
+      _id('hitPoints').innerHTML = `<strong>HP:</strong> ${character.hitpoints()}`;
+      _id('bloodied').innerHTML = `<strong>Bloodied Value:</strong>
+      ${Math.floor(character.hitpoints() * 0.5)}`;
       _id('defenses').innerHTML = `
         <strong>AC:</strong> ${character.defense.AC} + ____ (Armor, if applicable)<br />
         <strong>Fort:</strong> ${character.defense.fort}<br />
@@ -244,9 +251,9 @@ levelUp = (alpha, beta, level) => {
         ${alpha.appearance}<br />
         ${beta.appearance}<br />
         <strong>Primary Ability:</strong> ${alpha.type.stat.toUpperCase()} | <strong>Secondary Ability:</strong> ${beta.type.stat.toUpperCase()}<br />
-        Add +${alpha.type.bonus} to ${stringify(alpha.type.power)} overcharge &amp; add +${beta.type.bonus} to ${stringify(beta.type.power)} overcharge<br />
+        Add +${alpha.type.bonus} to <u>${stringify(alpha.type.power)}</u> overcharge &amp; add +${beta.type.bonus} to <u>${stringify(beta.type.power)}</u> overcharge<br />
         <strong>Skills:</strong><br />
-        Add +${alpha.skill.bonus} to <u>${stringify(alpha.skill.type)}</u> &amp; add + ${beta.skill.bonus} to <u>${stringify(beta.skill.type)}</u><br />
+        Add +${alpha.skill.bonus} to <u>${stringify(alpha.skill.type)}</u> &amp; add +${beta.skill.bonus} to <u>${stringify(beta.skill.type)}</u><br />
         <strong>Defense Bonuses:</strong><br />
         ${isThereDefense(alpha)}
         ${isThereDefense(beta)}
@@ -259,17 +266,16 @@ levelUp = (alpha, beta, level) => {
   console.dir(character);
 };
 
+document.getElementById('level').addEventListener('input', function() {
+  reset();
+  levelUp(character.alpha, character.beta, document.getElementById('level').value);
+});
+
 // ---- Random Character Generation!
 // ---------------------------------
 generate.defense = (defense) => {
-  if (defense.type.length > 0) {
-    if (Array.isArray(defense.type)) {
-      for (let i in defense.type) {
-        character.bonus[defense.type[i]] += Number(defense.bonus);
-      }
-    } else {
-      character.bonus[defense.type] += Number(defense.bonus);
-    }
+  for (let i in defense.type) {
+    character.bonus[defense.type[i]] += Number(defense.bonus);
   }
 };
 
@@ -279,7 +285,9 @@ generate.random = (origins) => {
   if (alpha.name === beta.name) {
     beta = origins.special.human;
   }
-  for (let i in stats) {
+  character.alpha = alpha;
+  character.beta = beta;
+  for (let i in 6) {
     character.ability[stats[i]] = threeDSix();
   }
   if (alpha.type.stat === beta.type.stat) {
@@ -290,12 +298,13 @@ generate.random = (origins) => {
   }
   generate.defense(alpha.defense);
   generate.defense(beta.defense);
+  skill.random();
   let text = '<strong>Stats</strong><br />';
   for (let i in stats) {
     text += `<div class="stat-cell"><div class="ability-mod">${character.mod(stats[i])}</div><div class="ability-name">${stats[i].toUpperCase()}</div><div class="ability-score">${character.ability[stats[i]]}</div></div>`;
   }
   _id('ability-table').innerHTML = text;
-  skill.random();
+
   skill.assignment(alpha, beta);
   let level = Number(_id('level').value);
   levelUp(alpha, beta, level);
@@ -337,7 +346,6 @@ reset = () => {
 };
 
 skill.assignment = (alpha, beta) => {
-  let text = '<strong>Skills</strong><br /><ul>';
   for (let i in skills) {
     switch (skills[i]) {
       case 'athletics':
@@ -361,33 +369,28 @@ skill.assignment = (alpha, beta) => {
         character.skills[skills[i]] = Number(character.mod('cha')) + Number(character.level);
         break;
     }
-    if (skills[i] === character.skills.random) {
-      character.skills[skills[i]] += 4;
-    }
   }
   skill.origin(alpha.skill);
   skill.origin(beta.skill);
+  character.skills[character.bonus.randomSkillName] += 4; // for random skill bonus!
+  let text = '<strong>Skills</strong><br /><ul>';
   for (let i in skills) {
     text += `<li><span class="mono">${character.skills[skills[i]]}</span> ${skills[i]}</li>`;
   }
   text += '</ul>';
   _id('skill-table').innerHTML = text;
-}
+};
 
 skill.origin = (originSkill) => {
-  if (Array.isArray(originSkill.type)) {
-    for (let i in originSkill.type) {
-      character.skills[originSkill.type[i]] += Number(originSkill.bonus);
-    }
-  } else {
-    character.skills[originSkill.type] += Number(originSkill.bonus);
+  for (let i in originSkill.type) {
+    character.skills[originSkill.type[i]] += Number(originSkill.bonus);
   }
 };
 
 skill.random = () => {
   let _random = Math.floor(Math.random() * 10);
   let _skill = skills[_random];
-  character.skill.random = _skill;
+  character.bonus.randomSkillName = _skill;
 };
 
 threeDSix = () => {
@@ -397,8 +400,5 @@ threeDSix = () => {
 // Render process:
 getJSON(originsURL, function(data) {
   _id('load-animation').style.display = 'display';
-  origins = data;
   generate.random(data);
-  console.log('Character:');
-  console.dir(character);
 });
